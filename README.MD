@@ -6,4 +6,4 @@ Small library created in MPLAB-X IDE for controlling a SIM800 module from a PIC1
 
 ## Usage [TODO]
 
-## How to contribute [TODO]
+## How to Contribute [TODO]
