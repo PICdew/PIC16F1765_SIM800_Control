@@ -1009,68 +1009,91 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i F7050
 :U ..
 "55
-[; ;main.c: 55:     char result[16] = "";
+[; ;main.c: 55:     char read1[16] = "";
 -> 0 `c
 ..
 ]
-[v _result `uc ~T0 @X0 -> 16 `i a ]
-[e = _result F7050 ]
+[v _read1 `uc ~T0 @X0 -> 16 `i a ]
+[e = _read1 F7050 ]
+[v F7052 `uc ~T0 @X0 -> 16 `i s ]
+[i F7052
+:U ..
 "56
-[; ;main.c: 56:     int charsRead = 0;
+[; ;main.c: 56:     char read2[16] = "";
+-> 0 `c
+..
+]
+[v _read2 `uc ~T0 @X0 -> 16 `i a ]
+[e = _read2 F7052 ]
+"57
+[; ;main.c: 57:     int charsRead = 0;
 [v _charsRead `i ~T0 @X0 1 a ]
 [e = _charsRead -> 0 `i ]
-"60
-[; ;main.c: 60:     while (1) {
+"61
+[; ;main.c: 61:     while (1) {
 [e :U 946 ]
 {
-"61
-[; ;main.c: 61:         EUSART_Write_String("AT\n");
-[e ( _EUSART_Write_String (1 :s 1C ]
 "62
-[; ;main.c: 62:         charsRead = EUSART_Read_String(result, 16);
-[e = _charsRead ( _EUSART_Read_String (2 , &U _result -> -> 16 `i `ui ]
+[; ;main.c: 62:         EUSART_Write_String("AT\n");
+[e ( _EUSART_Write_String (1 :s 1C ]
 "63
-[; ;main.c: 63:         charsRead = EUSART_Read_String(result, 16);
-[e = _charsRead ( _EUSART_Read_String (2 , &U _result -> -> 16 `i `ui ]
-"65
-[; ;main.c: 65:         if (strcmp(result, "OK\r\n") == 0)
-[e $ ! == ( _strcmp (2 , -> &U _result `*Cuc :s 2C -> 0 `i 948  ]
+[; ;main.c: 63:         charsRead = EUSART_Read_String(read1, 16);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _read1 -> -> 16 `i `ui ]
+"64
+[; ;main.c: 64:         charsRead = EUSART_Read_String(read2, 16);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _read2 -> -> 16 `i `ui ]
 "66
-[; ;main.c: 66:         {
-{
+[; ;main.c: 66:         if (strcmp(read2, "OK\r\n") == 0)
+[e $ ! == ( _strcmp (2 , -> &U _read2 `*Cuc :s 2C -> 0 `i 948  ]
 "67
-[; ;main.c: 67:             do { LATCbits.LATC2 = 1; } while(0);
+[; ;main.c: 67:         {
+{
+"68
+[; ;main.c: 68:             do { LATCbits.LATC2 = 1; } while(0);
 [e :U 951 ]
 {
 [e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
 }
 [e :U 950 ]
-"68
-[; ;main.c: 68:         } else {
+"69
+[; ;main.c: 69:         } else {
 }
 [e $U 952  ]
 [e :U 948 ]
 {
-"69
-[; ;main.c: 69:             do { LATCbits.LATC0 = 1; } while(0);
+"70
+[; ;main.c: 70:             do { LATCbits.LATC0 = 1; } while(0);
 [e :U 955 ]
 {
 [e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
 }
 [e :U 954 ]
-"70
-[; ;main.c: 70:         }
+"71
+[; ;main.c: 71:         }
 }
 [e :U 952 ]
-"132
-[; ;main.c: 132:     }
+"73
+[; ;main.c: 73:         EUSART_Write_String("AT+IPR?");
+[e ( _EUSART_Write_String (1 :s 3C ]
+"74
+[; ;main.c: 74:         charsRead = EUSART_Read_String(read1, 16);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _read1 -> -> 16 `i `ui ]
+"75
+[; ;main.c: 75:         charsRead = EUSART_Read_String(read2, 16);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _read2 -> -> 16 `i `ui ]
+"77
+[; ;main.c: 77:         charsRead = 0;
+[e = _charsRead -> 0 `i ]
+"143
+[; ;main.c: 143:     }
 }
 [e :U 945 ]
 [e $U 946  ]
 [e :U 947 ]
-"133
-[; ;main.c: 133: }
+"144
+[; ;main.c: 144: }
 [e :UE 944 ]
 }
+[a 3C 65 84 43 73 80 82 63 0 ]
 [a 1C 65 84 10 0 ]
 [a 2C 79 75 13 10 0 ]

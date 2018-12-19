@@ -11274,22 +11274,29 @@ void main(void) {
 
     SYSTEM_Initialize();
 
-    char result[16] = "";
+    char read1[16] = "";
+    char read2[16] = "";
     int charsRead = 0;
 
 
 
     while (1) {
         EUSART_Write_String("AT\n");
-        charsRead = EUSART_Read_String(result, 16);
-        charsRead = EUSART_Read_String(result, 16);
+        charsRead = EUSART_Read_String(read1, 16);
+        charsRead = EUSART_Read_String(read2, 16);
 
-        if (strcmp(result, "OK\r\n") == 0)
+        if (strcmp(read2, "OK\r\n") == 0)
         {
             do { LATCbits.LATC2 = 1; } while(0);
         } else {
             do { LATCbits.LATC0 = 1; } while(0);
         }
-# 132 "main.c"
+
+        EUSART_Write_String("AT+IPR?");
+        charsRead = EUSART_Read_String(read1, 16);
+        charsRead = EUSART_Read_String(read2, 16);
+
+        charsRead = 0;
+# 143 "main.c"
     }
 }

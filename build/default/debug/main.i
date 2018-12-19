@@ -11270,33 +11270,37 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 
 
 
+
+
 void main(void) {
 
     SYSTEM_Initialize();
 
-    char read1[16] = "";
-    char read2[16] = "";
+    char read1[32] = "";
+    char read2[32] = "";
     int charsRead = 0;
 
 
 
     while (1) {
-        EUSART_Write_String("AT\n");
-        charsRead = EUSART_Read_String(read1, 16);
-        charsRead = EUSART_Read_String(read2, 16);
+        EUSART_Write_String("AT\r\n");
+        charsRead = EUSART_Read_String(read1, 32);
+        charsRead = EUSART_Read_String(read1, 32);
 
-        if (strcmp(read2, "OK\r\n") == 0)
+        if (strcmp(read1, "OK\r\n") == 0)
         {
             do { LATCbits.LATC2 = 1; } while(0);
         } else {
             do { LATCbits.LATC0 = 1; } while(0);
         }
 
-        EUSART_Write_String("ATE0&W\n");
-        charsRead = EUSART_Read_String(read1, 16);
-        charsRead = EUSART_Read_String(read2, 16);
+        EUSART_Write_String("AT+CBC\r\n");
+        charsRead = EUSART_Read_String(read1, 32);
+        charsRead = EUSART_Read_String(read1, 32);
+        charsRead = EUSART_Read_String(read2, 32);
+        charsRead = EUSART_Read_String(read2, 32);
 
         charsRead = 0;
-# 139 "main.c"
+# 147 "main.c"
     }
 }

@@ -996,104 +996,110 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 19151: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
 [v $root$_main `(v ~T0 @X0 0 e ]
-"51 main.c
-[; ;main.c: 51: void main(void) {
+"53 main.c
+[; ;main.c: 53: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"53
-[; ;main.c: 53:     SYSTEM_Initialize();
+"55
+[; ;main.c: 55:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
-[v F7050 `uc ~T0 @X0 -> 16 `i s ]
+[v F7050 `uc ~T0 @X0 -> 32 `i s ]
 [i F7050
 :U ..
-"55
-[; ;main.c: 55:     char read1[16] = "";
+"57
+[; ;main.c: 57:     char read1[32] = "";
 -> 0 `c
 ..
 ]
-[v _read1 `uc ~T0 @X0 -> 16 `i a ]
+[v _read1 `uc ~T0 @X0 -> 32 `i a ]
 [e = _read1 F7050 ]
-[v F7052 `uc ~T0 @X0 -> 16 `i s ]
+[v F7052 `uc ~T0 @X0 -> 32 `i s ]
 [i F7052
 :U ..
-"56
-[; ;main.c: 56:     char read2[16] = "";
+"58
+[; ;main.c: 58:     char read2[32] = "";
 -> 0 `c
 ..
 ]
-[v _read2 `uc ~T0 @X0 -> 16 `i a ]
+[v _read2 `uc ~T0 @X0 -> 32 `i a ]
 [e = _read2 F7052 ]
-"57
-[; ;main.c: 57:     int charsRead = 0;
+"59
+[; ;main.c: 59:     int charsRead = 0;
 [v _charsRead `i ~T0 @X0 1 a ]
 [e = _charsRead -> 0 `i ]
-"61
-[; ;main.c: 61:     while (1) {
+"63
+[; ;main.c: 63:     while (1) {
 [e :U 946 ]
 {
-"62
-[; ;main.c: 62:         EUSART_Write_String("AT\n");
-[e ( _EUSART_Write_String (1 :s 1C ]
-"63
-[; ;main.c: 63:         charsRead = EUSART_Read_String(read1, 16);
-[e = _charsRead ( _EUSART_Read_String (2 , &U _read1 -> -> 16 `i `ui ]
 "64
-[; ;main.c: 64:         charsRead = EUSART_Read_String(read2, 16);
-[e = _charsRead ( _EUSART_Read_String (2 , &U _read2 -> -> 16 `i `ui ]
+[; ;main.c: 64:         EUSART_Write_String("AT\r\n");
+[e ( _EUSART_Write_String (1 :s 1C ]
+"65
+[; ;main.c: 65:         charsRead = EUSART_Read_String(read1, 32);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _read1 -> -> 32 `i `ui ]
 "66
-[; ;main.c: 66:         if (strcmp(read2, "OK\r\n") == 0)
-[e $ ! == ( _strcmp (2 , -> &U _read2 `*Cuc :s 2C -> 0 `i 948  ]
-"67
-[; ;main.c: 67:         {
-{
+[; ;main.c: 66:         charsRead = EUSART_Read_String(read1, 32);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _read1 -> -> 32 `i `ui ]
 "68
-[; ;main.c: 68:             do { LATCbits.LATC2 = 1; } while(0);
+[; ;main.c: 68:         if (strcmp(read1, "OK\r\n") == 0)
+[e $ ! == ( _strcmp (2 , -> &U _read1 `*Cuc :s 2C -> 0 `i 948  ]
+"69
+[; ;main.c: 69:         {
+{
+"70
+[; ;main.c: 70:             do { LATCbits.LATC2 = 1; } while(0);
 [e :U 951 ]
 {
 [e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
 }
 [e :U 950 ]
-"69
-[; ;main.c: 69:         } else {
+"71
+[; ;main.c: 71:         } else {
 }
 [e $U 952  ]
 [e :U 948 ]
 {
-"70
-[; ;main.c: 70:             do { LATCbits.LATC0 = 1; } while(0);
+"72
+[; ;main.c: 72:             do { LATCbits.LATC0 = 1; } while(0);
 [e :U 955 ]
 {
 [e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
 }
 [e :U 954 ]
-"71
-[; ;main.c: 71:         }
+"73
+[; ;main.c: 73:         }
 }
 [e :U 952 ]
-"73
-[; ;main.c: 73:         EUSART_Write_String("ATE0&W\n");
-[e ( _EUSART_Write_String (1 :s 3C ]
-"74
-[; ;main.c: 74:         charsRead = EUSART_Read_String(read1, 16);
-[e = _charsRead ( _EUSART_Read_String (2 , &U _read1 -> -> 16 `i `ui ]
 "75
-[; ;main.c: 75:         charsRead = EUSART_Read_String(read2, 16);
-[e = _charsRead ( _EUSART_Read_String (2 , &U _read2 -> -> 16 `i `ui ]
+[; ;main.c: 75:         EUSART_Write_String("AT+CBC\r\n");
+[e ( _EUSART_Write_String (1 :s 3C ]
+"76
+[; ;main.c: 76:         charsRead = EUSART_Read_String(read1, 32);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _read1 -> -> 32 `i `ui ]
 "77
-[; ;main.c: 77:         charsRead = 0;
+[; ;main.c: 77:         charsRead = EUSART_Read_String(read1, 32);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _read1 -> -> 32 `i `ui ]
+"78
+[; ;main.c: 78:         charsRead = EUSART_Read_String(read2, 32);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _read2 -> -> 32 `i `ui ]
+"79
+[; ;main.c: 79:         charsRead = EUSART_Read_String(read2, 32);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _read2 -> -> 32 `i `ui ]
+"81
+[; ;main.c: 81:         charsRead = 0;
 [e = _charsRead -> 0 `i ]
-"139
-[; ;main.c: 139:     }
+"147
+[; ;main.c: 147:     }
 }
 [e :U 945 ]
 [e $U 946  ]
 [e :U 947 ]
-"140
-[; ;main.c: 140: }
+"148
+[; ;main.c: 148: }
 [e :UE 944 ]
 }
-[a 3C 65 84 69 48 38 87 10 0 ]
-[a 1C 65 84 10 0 ]
+[a 1C 65 84 13 10 0 ]
 [a 2C 79 75 13 10 0 ]
+[a 3C 65 84 43 67 66 67 13 10 0 ]

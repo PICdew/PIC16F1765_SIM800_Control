@@ -45,6 +45,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#define MAX_SIZE 32
+
 /*
                          Main application
  */
@@ -52,29 +54,35 @@ void main(void) {
     // initialize the device
     SYSTEM_Initialize();
 
-    char read1[16] = "";
-    char read2[16] = "";
+    char read1[MAX_SIZE] = "";
+    char read2[MAX_SIZE] = "";
     int charsRead = 0;
 
     //unsigned int regClear = 0;
 
     while (1) {
-        EUSART_Write_String("AT\n");        
-        charsRead = EUSART_Read_String(read1, 16);
-        charsRead = EUSART_Read_String(read2, 16);
+        EUSART_Write_String("AT\r\n");        
+        charsRead = EUSART_Read_String(read1, MAX_SIZE);
+        charsRead = EUSART_Read_String(read1, MAX_SIZE);
         
-        if (strcmp(read2, "OK\r\n") == 0)
+        if (strcmp(read1, "OK\r\n") == 0)
         {
             LED_PIN_SetHigh();
         } else {
             ERROR_PIN_SetHigh();
         }
         
+        EUSART_Write_String("AT+CBC\r\n");
+        charsRead = EUSART_Read_String(read1, MAX_SIZE);
+        charsRead = EUSART_Read_String(read1, MAX_SIZE);
+        charsRead = EUSART_Read_String(read2, MAX_SIZE); 
+        charsRead = EUSART_Read_String(read2, MAX_SIZE);
+        
+        charsRead = 0;
+        
 //        EUSART_Write_String("ATE0&W\n");      
 //        charsRead = EUSART_Read_String(read1, 16);
 //        charsRead = EUSART_Read_String(read2, 16);
-        
-        charsRead = 0;
         
 //        do {
 //            EUSART_Write_String("AT\n");
