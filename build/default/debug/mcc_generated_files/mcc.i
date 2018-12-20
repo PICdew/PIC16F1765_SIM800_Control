@@ -10948,9 +10948,9 @@ extern __bank0 __bit __timeout;
 # 50 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pin_manager.h" 1
-# 146 "mcc_generated_files/pin_manager.h"
+# 166 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 158 "mcc_generated_files/pin_manager.h"
+# 178 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "mcc_generated_files/mcc.h" 2
 
@@ -11031,18 +11031,8 @@ typedef uint32_t uint_fast32_t;
 # 53 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/ext_int.h" 1
-# 250 "mcc_generated_files/ext_int.h"
+# 94 "mcc_generated_files/ext_int.h"
 void EXT_INT_Initialize(void);
-# 272 "mcc_generated_files/ext_int.h"
-void INT_ISR(void);
-# 296 "mcc_generated_files/ext_int.h"
-void INT_CallBack(void);
-# 319 "mcc_generated_files/ext_int.h"
-void INT_SetInterruptHandler(void (* InterruptHandler)(void));
-# 343 "mcc_generated_files/ext_int.h"
-extern void (*INT_InterruptHandler)(void);
-# 367 "mcc_generated_files/ext_int.h"
-void INT_DefaultInterruptHandler(void);
 # 54 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/eusart.h" 1

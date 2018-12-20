@@ -1575,7 +1575,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="ANSELC" settingAlias="ANSC1"/>
-         <value>analog</value>
+         <value>digital</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="EUSART" registerAlias="RCREG" settingAlias="RCREG"/>
@@ -1803,7 +1803,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="Custom Name RC1"/>
-         <value/>
+         <value>BTN1_PIN</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="Custom Name RC2"/>
@@ -2415,7 +2415,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="customNameUserSet RC1"/>
-         <value>disabled</value>
+         <value>enabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="Pin Module_IOCIISRFunction"/>
@@ -2751,7 +2751,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="RC1"/>
-         <value>disabled</value>
+         <value>input</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="trisUserSetRC4"/>
@@ -3055,7 +3055,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="Pin Module" registerAlias="ANSELC"/>
-         <value>15</value>
+         <value>13</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="ODCONA" settingAlias="ODA1" alias="enabled"/>
@@ -3248,16 +3248,16 @@
    </tokenMap>
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
+         <file>mcc_generated_files\ext_int.c</file>
+         <hash>d238b0e5b45f318258f2c3d8face7da6bc84a21846851392ea556e1af7aea595</hash>
+      </entry>
+      <entry>
          <file>mcc_generated_files\mcc.h</file>
          <hash>7471b435297a6b5086f6aa554f83959ef203be27ef8a842ddb0864b97956c2aa</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\device_config.h</file>
          <hash>7ba7fd83748a81e999b02f7e67c365b67f8bfcac616b6d63c600af38c3ce31a9</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\ext_int.c</file>
-         <hash>34fa421cd89c366be286de4df87b8020a29f7ebfab774537d58cab380725ec6b</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\eusart.h</file>
@@ -3273,15 +3273,15 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.h</file>
-         <hash>79d98f827cfdc34ef6b14a9da95249bbddbf26bbfce9491267afb722e2b8e3f7</hash>
+         <hash>9537c68b2dd720563f46c10ff8402679a4c7a14c2fefdf70d9ca454ddac0fa25</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\ext_int.h</file>
+         <hash>7e01448f5724e73b6c889b524b6acaafcb3e3140aee8a596a74b12c37affa569</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.c</file>
          <hash>ef08f6960af9214346e3cc0670c09e4c8f0aca7f8c081357d4894a0de4985147</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\ext_int.h</file>
-         <hash>2b82616cefe82ee633a815050924c56f869f958e161b7c841647de102e8c1e76</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\eusart.c</file>
@@ -3289,7 +3289,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.c</file>
-         <hash>ec9c56ce185c630b84f1fd9f2db85d0cc4f6facbc229d1a045386a56f8ba5fd8</hash>
+         <hash>81abed2f800ca49785fce7c968cd3276d77a352b96ebd974a59a98e8784111c3</hash>
       </entry>
    </generatedFileHashHistoryMap>
 </config>

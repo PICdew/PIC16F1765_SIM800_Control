@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/pin_manager.c"
+# 1 "sim800at.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,14 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/pin_manager.c" 2
-# 49 "mcc_generated_files/pin_manager.c"
+# 1 "sim800at.c" 2
+
+
+
+
+
+
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -10940,67 +10946,237 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
-# 49 "mcc_generated_files/pin_manager.c" 2
+# 8 "sim800at.c" 2
 
-# 1 "mcc_generated_files/pin_manager.h" 1
-# 166 "mcc_generated_files/pin_manager.h"
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\string.h" 1 3
+# 25 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\string.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 409 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 25 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\string.h" 2 3
+
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+# 65 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\string.h" 3
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 9 "sim800at.c" 2
+
+# 1 "./sim800at.h" 1
+# 15 "./sim800at.h"
+int SendAT(char *response);
+# 31 "./sim800at.h"
+int SendCBC(char *response);
+# 45 "./sim800at.h"
+int SendCMGF(char *response);
+# 59 "./sim800at.h"
+int SendCSCS(char *response);
+# 75 "./sim800at.h"
+int SendTestMessage(char *response, char *message);
+# 10 "sim800at.c" 2
+
+# 1 "./mcc_generated_files/mcc.h" 1
+# 50 "./mcc_generated_files/mcc.h"
+# 1 "./mcc_generated_files/device_config.h" 1
+# 50 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/pin_manager.h" 1
+# 146 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 178 "mcc_generated_files/pin_manager.h"
+# 158 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 50 "mcc_generated_files/pin_manager.c" 2
+# 51 "./mcc_generated_files/mcc.h" 2
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 1 3
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 135 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 150 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 166 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+
+
+
+
+typedef long int32_t;
+# 189 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef int32_t intmax_t;
+
+
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+
+
+
+
+typedef unsigned long uint32_t;
+# 225 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef uint32_t uintmax_t;
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+typedef int32_t int_least32_t;
+
+
+
+
+typedef uint8_t uint_fast8_t;
+
+
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+typedef uint32_t uint_least32_t;
+# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+# 52 "./mcc_generated_files/mcc.h" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdbool.h" 1 3
-# 51 "mcc_generated_files/pin_manager.c" 2
+# 53 "./mcc_generated_files/mcc.h" 2
 
+# 1 "./mcc_generated_files/ext_int.h" 1
+# 250 "./mcc_generated_files/ext_int.h"
+void EXT_INT_Initialize(void);
+# 272 "./mcc_generated_files/ext_int.h"
+void INT_ISR(void);
+# 296 "./mcc_generated_files/ext_int.h"
+void INT_CallBack(void);
+# 319 "./mcc_generated_files/ext_int.h"
+void INT_SetInterruptHandler(void (* InterruptHandler)(void));
+# 343 "./mcc_generated_files/ext_int.h"
+extern void (*INT_InterruptHandler)(void);
+# 367 "./mcc_generated_files/ext_int.h"
+void INT_DefaultInterruptHandler(void);
+# 54 "./mcc_generated_files/mcc.h" 2
 
+# 1 "./mcc_generated_files/eusart.h" 1
+# 97 "./mcc_generated_files/eusart.h"
+void EUSART_Initialize(void);
+# 145 "./mcc_generated_files/eusart.h"
+_Bool EUSART_is_tx_ready(void);
+# 193 "./mcc_generated_files/eusart.h"
+_Bool EUSART_is_rx_ready(void);
+# 240 "./mcc_generated_files/eusart.h"
+_Bool EUSART_is_tx_done(void);
+# 260 "./mcc_generated_files/eusart.h"
+uint8_t EUSART_Read(void);
+# 280 "./mcc_generated_files/eusart.h"
+void EUSART_Write(uint8_t txData);
 
+void EUSART_Write_String(char *s);
 
-
-
-void PIN_MANAGER_Initialize(void)
+int EUSART_Read_String(char *s, unsigned int max_length);
+# 55 "./mcc_generated_files/mcc.h" 2
+# 70 "./mcc_generated_files/mcc.h"
+void SYSTEM_Initialize(void);
+# 83 "./mcc_generated_files/mcc.h"
+void OSCILLATOR_Initialize(void);
+# 95 "./mcc_generated_files/mcc.h"
+void WDT_Initialize(void);
+# 11 "sim800at.c" 2
+# 25 "sim800at.c"
+int SendAT(char *response)
 {
+    int totalRead = 0;
+    int charsRead = 0;
+    char line[64] = "";
 
+    EUSART_Write_String("AT\r\n");
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+    charsRead = EUSART_Read_String(line, 64);
+    strncat(response,line,charsRead);
+    totalRead += charsRead;
 
-
-    LATA = 0x00;
-    LATC = 0x00;
-
-
-
-
-    TRISA = 0x37;
-    TRISC = 0x2A;
-
-
-
-
-    ANSELC = 0x0D;
-    ANSELA = 0x17;
-
-
-
-
-    WPUA = 0x00;
-    WPUC = 0x00;
-    OPTION_REGbits.nWPUEN = 1;
-
-
-
-
-    ODCONA = 0x00;
-    ODCONC = 0x00;
-
-
-
-
-    SLRCONA = 0x37;
-    SLRCONC = 0x3F;
-# 104 "mcc_generated_files/pin_manager.c"
-    RXPPS = 0x15;
-
-    RC4PPS = 0x16;
+    return totalRead;
 }
-
-void PIN_MANAGER_IOC(void)
+# 54 "sim800at.c"
+int SendCMGF(char *response)
 {
+    int totalRead = 0;
+    int charsRead = 0;
+    char line[64] = "";
+
+    EUSART_Write_String("AT+CPIN=?\r\n");
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+    charsRead = EUSART_Read_String(line, 64);
+    strncat(response,line,charsRead);
+    totalRead += charsRead;
+
+    return totalRead;
 }

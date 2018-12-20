@@ -3,16 +3,26 @@
 [d edition pro ]
 [d chip 16F1765 ]
 [d frameptr 6 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+[v _memset memset `(*.4v  1 e 1 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "3 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcmp.c
 [v _strcmp strcmp `(i  1 e 2 0 ]
+"12 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+"3 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strncat.c
+[v _strncat strncat `(*.4uc  1 e 1 0 ]
+"7 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strncpy.c
+[v _strncpy strncpy `(*.4uc  1 e 1 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"51 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
+"52 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
 [v _main main `(v  1 e 1 0 ]
 "55 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
+"80
+[v _EUSART_is_rx_ready EUSART_is_rx_ready `(a  1 e 1 0 ]
 "88
 [v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
 "103
@@ -37,6 +47,10 @@
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
 "57 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"25 C:\Repos\zing\PIC16F1765_SIM800_Control\sim800at.c
+[v _SendAT SendAT `(i  1 e 2 0 ]
+"54
+[v _SendCMGF SendCMGF `(i  1 e 2 0 ]
 [s S223 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
@@ -174,20 +188,16 @@
 [v _RC4PPS RC4PPS `VEuc  1 e 1 @3748 ]
 "30 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/ext_int.c
 [v _INT_InterruptHandler INT_InterruptHandler `*.37(v  1 e 2 0 ]
-"51 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
+"52 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
 [v _main main `(v  1 e 1 0 ]
 {
 "56
-[v main@read2 read2 `[16]uc  1 a 16 16 ]
-"55
-[v main@read1 read1 `[16]uc  1 a 16 0 ]
+[v main@responseArray responseArray `[64]uc  1 a 64 0 ]
 "57
-[v main@charsRead charsRead `i  1 a 2 32 ]
-"53
-[v main@F7050 F7050 `[16]uc  1 s 16 F7050 ]
-"55
-[v main@F7052 F7052 `[16]uc  1 s 16 F7052 ]
-"144
+[v main@charsRead charsRead `i  1 a 2 64 ]
+"54
+[v main@F7061 F7061 `[64]uc  1 s 64 F7061 ]
+"179
 } 0
 "3 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcmp.c
 [v _strcmp strcmp `(i  1 e 2 0 ]
@@ -197,6 +207,136 @@
 [v strcmp@r r `*.25DCuc  1 p 2 0 ]
 [v strcmp@l l `*.4DCuc  1 a 1 4 ]
 "7
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+[v _memset memset `(*.4v  1 e 1 0 ]
+{
+[v memset@dest dest `*.4v  1 a 1 wreg ]
+"7
+[v memset@k k `ui  1 a 2 6 ]
+"6
+[v memset@s s `*.4uc  1 a 1 9 ]
+"4
+[v memset@dest dest `*.4v  1 a 1 wreg ]
+[v memset@c c `i  1 p 2 0 ]
+[v memset@n n `ui  1 p 2 2 ]
+"6
+[v memset@dest dest `*.4v  1 a 1 8 ]
+"90
+} 0
+"54 C:\Repos\zing\PIC16F1765_SIM800_Control\sim800at.c
+[v _SendCMGF SendCMGF `(i  1 e 2 0 ]
+{
+[v SendCMGF@response response `*.4uc  1 a 1 wreg ]
+"58
+[v SendCMGF@line line `[64]uc  1 a 64 3 ]
+"57
+[v SendCMGF@charsRead charsRead `i  1 a 2 70 ]
+"56
+[v SendCMGF@totalRead totalRead `i  1 a 2 67 ]
+"54
+[v SendCMGF@response response `*.4uc  1 a 1 wreg ]
+"57
+[v SendCMGF@F6752 F6752 `[64]uc  1 s 64 F6752 ]
+"56
+[v SendCMGF@response response `*.4uc  1 a 1 69 ]
+"69
+} 0
+"25
+[v _SendAT SendAT `(i  1 e 2 0 ]
+{
+[v SendAT@response response `*.4uc  1 a 1 wreg ]
+"29
+[v SendAT@line line `[64]uc  1 a 64 3 ]
+"28
+[v SendAT@charsRead charsRead `i  1 a 2 70 ]
+"27
+[v SendAT@totalRead totalRead `i  1 a 2 67 ]
+"25
+[v SendAT@response response `*.4uc  1 a 1 wreg ]
+"28
+[v SendAT@F6746 F6746 `[64]uc  1 s 64 F6746 ]
+"27
+[v SendAT@response response `*.4uc  1 a 1 69 ]
+"40
+} 0
+"7 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strncpy.c
+[v _strncpy strncpy `(*.4uc  1 e 1 0 ]
+{
+[v strncpy@d d `*.4uc  1 a 1 wreg ]
+"10
+[v strncpy@cp cp `*.4uc  1 a 1 5 ]
+"7
+[v strncpy@d d `*.4uc  1 a 1 wreg ]
+[v strncpy@s s `*.4DCuc  1 p 1 0 ]
+[v strncpy@n n `ui  1 p 2 1 ]
+"11
+[v strncpy@d d `*.4uc  1 a 1 4 ]
+"23
+} 0
+"3 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strncat.c
+[v _strncat strncat `(*.4uc  1 e 1 0 ]
+{
+[v strncat@d d `*.4uc  1 a 1 wreg ]
+"5
+[v strncat@a a `*.4uc  1 a 1 12 ]
+"3
+[v strncat@d d `*.4uc  1 a 1 wreg ]
+[v strncat@s s `*.4DCuc  1 p 1 8 ]
+[v strncat@n n `ui  1 p 2 9 ]
+"5
+[v strncat@d d `*.4uc  1 a 1 13 ]
+"10
+} 0
+"12 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+[v strlen@s s `*.4DCuc  1 a 1 wreg ]
+"14
+[v strlen@a a `*.4DCuc  1 a 1 6 ]
+"12
+[v strlen@s s `*.4DCuc  1 a 1 wreg ]
+"14
+[v strlen@s s `*.4DCuc  1 a 1 7 ]
+"26
+} 0
+"110 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/eusart.c
+[v _EUSART_Write_String EUSART_Write_String `(v  1 e 1 0 ]
+{
+[v EUSART_Write_String@s s `*.25uc  1 p 2 1 ]
+"117
+} 0
+"103
+[v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
+{
+[v EUSART_Write@txData txData `uc  1 a 1 wreg ]
+[v EUSART_Write@txData txData `uc  1 a 1 wreg ]
+[v EUSART_Write@txData txData `uc  1 a 1 0 ]
+"108
+} 0
+"119
+[v _EUSART_Read_String EUSART_Read_String `(i  1 e 2 0 ]
+{
+[v EUSART_Read_String@s s `*.4uc  1 a 1 wreg ]
+"127
+[v EUSART_Read_String@c c `uc  1 a 1 10 ]
+"121
+[v EUSART_Read_String@i i `i  1 a 2 7 ]
+"123
+[v EUSART_Read_String@seenNL seenNL `ui  1 a 2 5 ]
+"122
+[v EUSART_Read_String@seenCR seenCR `ui  1 a 2 3 ]
+"119
+[v EUSART_Read_String@s s `*.4uc  1 a 1 wreg ]
+[v EUSART_Read_String@max_length max_length `ui  1 p 2 0 ]
+"121
+[v EUSART_Read_String@s s `*.4uc  1 a 1 9 ]
+"147
+} 0
+"88
+[v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
+{
+"101
 } 0
 "50 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -234,41 +374,8 @@
 {
 "74
 } 0
-"110
-[v _EUSART_Write_String EUSART_Write_String `(v  1 e 1 0 ]
+"80
+[v _EUSART_is_rx_ready EUSART_is_rx_ready `(a  1 e 1 0 ]
 {
-[v EUSART_Write_String@s s `*.25uc  1 p 2 1 ]
-"117
-} 0
-"103
-[v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
-{
-[v EUSART_Write@txData txData `uc  1 a 1 wreg ]
-[v EUSART_Write@txData txData `uc  1 a 1 wreg ]
-[v EUSART_Write@txData txData `uc  1 a 1 0 ]
-"108
-} 0
-"119
-[v _EUSART_Read_String EUSART_Read_String `(i  1 e 2 0 ]
-{
-[v EUSART_Read_String@s s `*.4uc  1 a 1 wreg ]
-"127
-[v EUSART_Read_String@c c `uc  1 a 1 10 ]
-"121
-[v EUSART_Read_String@i i `i  1 a 2 7 ]
-"123
-[v EUSART_Read_String@seenNL seenNL `ui  1 a 2 5 ]
-"122
-[v EUSART_Read_String@seenCR seenCR `ui  1 a 2 3 ]
-"119
-[v EUSART_Read_String@s s `*.4uc  1 a 1 wreg ]
-[v EUSART_Read_String@max_length max_length `ui  1 p 2 0 ]
-"121
-[v EUSART_Read_String@s s `*.4uc  1 a 1 9 ]
-"146
-} 0
-"88
-[v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
-{
-"101
+"82
 } 0

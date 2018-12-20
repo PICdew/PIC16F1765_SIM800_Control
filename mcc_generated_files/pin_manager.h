@@ -79,6 +79,26 @@
 #define ERROR_PIN_SetAnalogMode()      do { ANSELCbits.ANSC0 = 1; } while(0)
 #define ERROR_PIN_SetDigitalMode()     do { ANSELCbits.ANSC0 = 0; } while(0)
 
+// get/set BTN1_PIN aliases
+#define BTN1_PIN_TRIS                 TRISCbits.TRISC1
+#define BTN1_PIN_LAT                  LATCbits.LATC1
+#define BTN1_PIN_PORT                 PORTCbits.RC1
+#define BTN1_PIN_WPU                  WPUCbits.WPUC1
+#define BTN1_PIN_OD                   ODCONCbits.ODC1
+#define BTN1_PIN_ANS                  ANSELCbits.ANSC1
+#define BTN1_PIN_SetHigh()            do { LATCbits.LATC1 = 1; } while(0)
+#define BTN1_PIN_SetLow()             do { LATCbits.LATC1 = 0; } while(0)
+#define BTN1_PIN_Toggle()             do { LATCbits.LATC1 = ~LATCbits.LATC1; } while(0)
+#define BTN1_PIN_GetValue()           PORTCbits.RC1
+#define BTN1_PIN_SetDigitalInput()    do { TRISCbits.TRISC1 = 1; } while(0)
+#define BTN1_PIN_SetDigitalOutput()   do { TRISCbits.TRISC1 = 0; } while(0)
+#define BTN1_PIN_SetPullup()          do { WPUCbits.WPUC1 = 1; } while(0)
+#define BTN1_PIN_ResetPullup()        do { WPUCbits.WPUC1 = 0; } while(0)
+#define BTN1_PIN_SetPushPull()        do { ODCONCbits.ODC1 = 0; } while(0)
+#define BTN1_PIN_SetOpenDrain()       do { ODCONCbits.ODC1 = 1; } while(0)
+#define BTN1_PIN_SetAnalogMode()      do { ANSELCbits.ANSC1 = 1; } while(0)
+#define BTN1_PIN_SetDigitalMode()     do { ANSELCbits.ANSC1 = 0; } while(0)
+
 // get/set LED_PIN aliases
 #define LED_PIN_TRIS                 TRISCbits.TRISC2
 #define LED_PIN_LAT                  LATCbits.LATC2

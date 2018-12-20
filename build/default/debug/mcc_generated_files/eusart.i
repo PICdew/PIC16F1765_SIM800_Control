@@ -11118,7 +11118,6 @@ int EUSART_Read_String(char *s, unsigned int max_length)
         if (c == '\r')
         {
             seenCR = 1;
-
         } else if (c == '\n')
         {
             seenNL = 1;
@@ -11129,7 +11128,9 @@ int EUSART_Read_String(char *s, unsigned int max_length)
         i++;
 
         if (seenCR && seenNL) {
-            return i;
+            break;
         }
     }
+
+    return i;
 }

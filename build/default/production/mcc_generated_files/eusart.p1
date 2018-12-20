@@ -1248,46 +1248,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 "131
 [; ;mcc_generated_files/eusart.c: 131:             seenCR = 1;
 [e = _seenCR -> -> 1 `i `ui ]
-"133
-[; ;mcc_generated_files/eusart.c: 133:         } else if (c == '\n')
+"132
+[; ;mcc_generated_files/eusart.c: 132:         } else if (c == '\n')
 }
 [e $U 963  ]
 [e :U 962 ]
 [e $ ! == -> _c `ui -> 10 `ui 964  ]
-"134
-[; ;mcc_generated_files/eusart.c: 134:         {
+"133
+[; ;mcc_generated_files/eusart.c: 133:         {
 {
-"135
-[; ;mcc_generated_files/eusart.c: 135:             seenNL = 1;
+"134
+[; ;mcc_generated_files/eusart.c: 134:             seenNL = 1;
 [e = _seenNL -> -> 1 `i `ui ]
-"136
-[; ;mcc_generated_files/eusart.c: 136:         }
+"135
+[; ;mcc_generated_files/eusart.c: 135:         }
 }
 [e :U 964 ]
 [e :U 963 ]
-"138
-[; ;mcc_generated_files/eusart.c: 138:         *s = c;
+"137
+[; ;mcc_generated_files/eusart.c: 137:         *s = c;
 [e = *U _s _c ]
-"139
-[; ;mcc_generated_files/eusart.c: 139:         s++;
+"138
+[; ;mcc_generated_files/eusart.c: 138:         s++;
 [e ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
-"140
-[; ;mcc_generated_files/eusart.c: 140:         i++;
+"139
+[; ;mcc_generated_files/eusart.c: 139:         i++;
 [e ++ _i -> 1 `i ]
-"142
-[; ;mcc_generated_files/eusart.c: 142:         if (seenCR && seenNL) {
+"141
+[; ;mcc_generated_files/eusart.c: 141:         if (seenCR && seenNL) {
 [e $ ! && != _seenCR -> -> 0 `i `ui != _seenNL -> -> 0 `i `ui 965  ]
 {
+"142
+[; ;mcc_generated_files/eusart.c: 142:             break;
+[e $U 961  ]
 "143
-[; ;mcc_generated_files/eusart.c: 143:             return i;
-[e ) _i ]
-[e $UE 958  ]
-"144
-[; ;mcc_generated_files/eusart.c: 144:         }
+[; ;mcc_generated_files/eusart.c: 143:         }
 }
 [e :U 965 ]
-"145
-[; ;mcc_generated_files/eusart.c: 145:     }
+"144
+[; ;mcc_generated_files/eusart.c: 144:     }
 }
 [e :U 959 ]
 "125
@@ -1295,6 +1294,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `ui _max_length 960  ]
 [e :U 961 ]
 "146
-[; ;mcc_generated_files/eusart.c: 146: }
+[; ;mcc_generated_files/eusart.c: 146:     return i;
+[e ) _i ]
+[e $UE 958  ]
+"147
+[; ;mcc_generated_files/eusart.c: 147: }
 [e :UE 958 ]
 }

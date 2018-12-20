@@ -11266,6 +11266,19 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 46 "main.c" 2
 
+# 1 "./sim800at.h" 1
+# 15 "./sim800at.h"
+int SendAT(char *response);
+# 31 "./sim800at.h"
+int SendCBC(char *response);
+# 45 "./sim800at.h"
+int SendCMGF(char *response);
+# 59 "./sim800at.h"
+int SendCSCS(char *response);
+# 75 "./sim800at.h"
+int SendTestMessage(char *response, char *message);
+# 47 "main.c" 2
+
 
 
 
@@ -11274,29 +11287,55 @@ void main(void) {
 
     SYSTEM_Initialize();
 
-    char read1[16] = "";
-    char read2[16] = "";
+    char responseArray[64] = "";
     int charsRead = 0;
 
 
 
     while (1) {
-        EUSART_Write_String("AT\n");
-        charsRead = EUSART_Read_String(read1, 16);
-        charsRead = EUSART_Read_String(read2, 16);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
 
-        if (strcmp(read2, "OK\r\n") == 0)
+        while (EUSART_is_rx_ready())
         {
+            charsRead = EUSART_Read_String(responseArray, 64);
+            _delay((unsigned long)((200)*(16000000/4000.0)));
+        }
+
+        do { LATCbits.LATC2 = 1; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+        do { LATCbits.LATC2 = 0; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+        do { LATCbits.LATC2 = 1; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+        do { LATCbits.LATC2 = 0; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+
+
+        charsRead = SendAT(responseArray);
+
+        if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
             do { LATCbits.LATC2 = 1; } while(0);
+            _delay((unsigned long)((200)*(16000000/4000.0)));
+            do { LATCbits.LATC2 = 0; } while(0);
+            _delay((unsigned long)((200)*(16000000/4000.0)));
         } else {
             do { LATCbits.LATC0 = 1; } while(0);
         }
 
-        EUSART_Write_String("AT+IPR?");
-        charsRead = EUSART_Read_String(read1, 16);
-        charsRead = EUSART_Read_String(read2, 16);
+        memset(responseArray, 0, sizeof responseArray);
 
-        charsRead = 0;
-# 143 "main.c"
+        charsRead = SendCMGF(responseArray);
+
+        if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+            do { LATCbits.LATC2 = 1; } while(0);
+            _delay((unsigned long)((200)*(16000000/4000.0)));
+            do { LATCbits.LATC2 = 0; } while(0);
+            _delay((unsigned long)((200)*(16000000/4000.0)));
+        } else {
+            do { LATCbits.LATC0 = 1; } while(0);
+        }
+
+        memset(responseArray, 0, sizeof responseArray);
+# 178 "main.c"
     }
 }

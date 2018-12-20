@@ -1,41 +1,20 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"70 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 70: void SYSTEM_Initialize(void);
-[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
+"282 ./mcc_generated_files/eusart.h
+[; ;./mcc_generated_files/eusart.h: 282: void EUSART_Write_String(char *s);
+[v _EUSART_Write_String `(v ~T0 @X0 0 ef1`*uc ]
+"284
+[; ;./mcc_generated_files/eusart.h: 284: int EUSART_Read_String(char *s, unsigned int max_length);
+[v _EUSART_Read_String `(i ~T0 @X0 0 ef2`*uc`ui ]
+"34 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 34: char *strncpy (char *restrict, const char *restrict, size_t);
+[v _strncpy `(*uc ~T0 @X0 0 ef3`*uc`*Cuc`ui ]
+"37
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 37: char *strncat (char *restrict, const char *restrict, size_t);
+[v _strncat `(*uc ~T0 @X0 0 ef3`*uc`*Cuc`ui ]
 [v F6504 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic.h
 [v __delay `JF6504 ~T0 @X0 0 e ]
 [p i __delay ]
-"284 ./mcc_generated_files/eusart.h
-[; ;./mcc_generated_files/eusart.h: 284: int EUSART_Read_String(char *s, unsigned int max_length);
-[v _EUSART_Read_String `(i ~T0 @X0 0 ef2`*uc`ui ]
-"193
-[; ;./mcc_generated_files/eusart.h: 193: _Bool EUSART_is_rx_ready(void);
-[v _EUSART_is_rx_ready `(a ~T0 @X0 0 ef ]
-"2628 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 2628:     struct {
-[s S141 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S141 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
-"2627
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 2627: typedef union {
-[u S140 `S141 1 ]
-[n S140 . . ]
-"2637
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 2637: extern volatile LATCbits_t LATCbits __attribute__((address(0x10E)));
-[v _LATCbits `VS140 ~T0 @X0 0 e@270 ]
-"15 ./sim800at.h
-[; ;./sim800at.h: 15: int SendAT(char *response);
-[v _SendAT `(i ~T0 @X0 0 ef1`*uc ]
-"39 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 39: int strcmp (const char *, const char *);
-[v _strcmp `(i ~T0 @X0 0 ef2`*Cuc`*Cuc ]
-"29
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 29: void *memset (void *, int, size_t);
-[v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
-"45 ./sim800at.h
-[; ;./sim800at.h: 45: int SendCMGF(char *response);
-[v _SendCMGF `(i ~T0 @X0 0 ef1`*uc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1008,201 +987,264 @@ Version 4.0 HI-TECH Software Intermediate Code
 "19151
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 19151: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-[v $root$_main `(v ~T0 @X0 0 e ]
-"52 main.c
-[; ;main.c: 52: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
+"25 sim800at.c
+[; ;sim800at.c: 25: int SendAT(char *response)
+[v _SendAT `(i ~T0 @X0 1 ef1`*uc ]
+"26
+[; ;sim800at.c: 26: {
 {
-[e :U _main ]
+[e :U _SendAT ]
+"25
+[; ;sim800at.c: 25: int SendAT(char *response)
+[v _response `*uc ~T0 @X0 1 r1 ]
+"26
+[; ;sim800at.c: 26: {
 [f ]
-"54
-[; ;main.c: 54:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-[v F7061 `uc ~T0 @X0 -> 64 `i s ]
-[i F7061
+"27
+[; ;sim800at.c: 27:     int totalRead = 0;
+[v _totalRead `i ~T0 @X0 1 a ]
+[e = _totalRead -> 0 `i ]
+"28
+[; ;sim800at.c: 28:     int charsRead = 0;
+[v _charsRead `i ~T0 @X0 1 a ]
+[e = _charsRead -> 0 `i ]
+[v F6737 `uc ~T0 @X0 -> 64 `i s ]
+[i F6737
 :U ..
-"56
-[; ;main.c: 56:     char responseArray[64] = "";
+"29
+[; ;sim800at.c: 29:     char line[64] = "";
 -> 0 `c
 ..
 ]
-[v _responseArray `uc ~T0 @X0 -> 64 `i a ]
-[e = _responseArray F7061 ]
+[v _line `uc ~T0 @X0 -> 64 `i a ]
+[e = _line F6737 ]
+"31
+[; ;sim800at.c: 31:     EUSART_Write_String("AT\r\n");
+[e ( _EUSART_Write_String (1 :s 1C ]
+"32
+[; ;sim800at.c: 32:     charsRead = EUSART_Read_String(line, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _line -> -> 64 `i `ui ]
+"33
+[; ;sim800at.c: 33:     strncpy(response, line, charsRead);
+[e ( _strncpy (3 , , _response -> &U _line `*Cuc -> _charsRead `ui ]
+"34
+[; ;sim800at.c: 34:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
+"35
+[; ;sim800at.c: 35:     charsRead = EUSART_Read_String(line, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _line -> -> 64 `i `ui ]
+"36
+[; ;sim800at.c: 36:     strncat(response,line,charsRead);
+[e ( _strncat (3 , , _response -> &U _line `*Cuc -> _charsRead `ui ]
+"37
+[; ;sim800at.c: 37:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
+"39
+[; ;sim800at.c: 39:     return totalRead;
+[e ) _totalRead ]
+[e $UE 942  ]
+"40
+[; ;sim800at.c: 40: }
+[e :UE 942 ]
+}
+"54
+[; ;sim800at.c: 54: int SendCMGF(char *response)
+[v _SendCMGF `(i ~T0 @X0 1 ef1`*uc ]
+"55
+[; ;sim800at.c: 55: {
+{
+[e :U _SendCMGF ]
+"54
+[; ;sim800at.c: 54: int SendCMGF(char *response)
+[v _response `*uc ~T0 @X0 1 r1 ]
+"55
+[; ;sim800at.c: 55: {
+[f ]
+"56
+[; ;sim800at.c: 56:     int totalRead = 0;
+[v _totalRead `i ~T0 @X0 1 a ]
+[e = _totalRead -> 0 `i ]
 "57
-[; ;main.c: 57:     int charsRead = 0;
+[; ;sim800at.c: 57:     int charsRead = 0;
 [v _charsRead `i ~T0 @X0 1 a ]
 [e = _charsRead -> 0 `i ]
+[v F6743 `uc ~T0 @X0 -> 64 `i s ]
+[i F6743
+:U ..
+"58
+[; ;sim800at.c: 58:     char line[64] = "";
+-> 0 `c
+..
+]
+[v _line `uc ~T0 @X0 -> 64 `i a ]
+[e = _line F6743 ]
+"60
+[; ;sim800at.c: 60:     EUSART_Write_String("AT+CMGF=1\r\n");
+[e ( _EUSART_Write_String (1 :s 2C ]
 "61
-[; ;main.c: 61:     while (1) {
-[e :U 946 ]
-{
+[; ;sim800at.c: 61:     charsRead = EUSART_Read_String(line, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _line -> -> 64 `i `ui ]
 "62
-[; ;main.c: 62:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;sim800at.c: 62:     strncpy(response, line, charsRead);
+[e ( _strncpy (3 , , _response -> &U _line `*Cuc -> _charsRead `ui ]
+"63
+[; ;sim800at.c: 63:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
 "64
-[; ;main.c: 64:         while (EUSART_is_rx_ready())
-[e $U 948  ]
-[e :U 949 ]
+[; ;sim800at.c: 64:     charsRead = EUSART_Read_String(line, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _line -> -> 64 `i `ui ]
 "65
-[; ;main.c: 65:         {
-{
+[; ;sim800at.c: 65:     strncat(response,line,charsRead);
+[e ( _strncat (3 , , _response -> &U _line `*Cuc -> _charsRead `ui ]
 "66
-[; ;main.c: 66:             charsRead = EUSART_Read_String(responseArray, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , &U _responseArray -> -> 64 `i `ui ]
-"67
-[; ;main.c: 67:             _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;sim800at.c: 66:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
 "68
-[; ;main.c: 68:         }
+[; ;sim800at.c: 68:     return totalRead;
+[e ) _totalRead ]
+[e $UE 943  ]
+"69
+[; ;sim800at.c: 69: }
+[e :UE 943 ]
 }
-[e :U 948 ]
-"64
-[; ;main.c: 64:         while (EUSART_is_rx_ready())
-[e $ != -> ( _EUSART_is_rx_ready ..  `i -> 0 `i 949  ]
-[e :U 950 ]
-"70
-[; ;main.c: 70:         do { LATCbits.LATC2 = 1; } while(0);
-[e :U 953 ]
-{
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-}
-[e :U 952 ]
-"71
-[; ;main.c: 71:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"72
-[; ;main.c: 72:         do { LATCbits.LATC2 = 0; } while(0);
-[e :U 956 ]
-{
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-}
-[e :U 955 ]
-"73
-[; ;main.c: 73:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"74
-[; ;main.c: 74:         do { LATCbits.LATC2 = 1; } while(0);
-[e :U 959 ]
-{
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-}
-[e :U 958 ]
-"75
-[; ;main.c: 75:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"76
-[; ;main.c: 76:         do { LATCbits.LATC2 = 0; } while(0);
-[e :U 962 ]
-{
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-}
-[e :U 961 ]
-"77
-[; ;main.c: 77:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"80
-[; ;main.c: 80:         charsRead = SendAT(responseArray);
-[e = _charsRead ( _SendAT (1 &U _responseArray ]
-"82
-[; ;main.c: 82:         if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-[e $ ! == ( _strcmp (2 , -> &U _responseArray `*Cuc :s 1C -> 0 `i 963  ]
-{
 "83
-[; ;main.c: 83:             do { LATCbits.LATC2 = 1; } while(0);
-[e :U 966 ]
-{
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-}
-[e :U 965 ]
+[; ;sim800at.c: 83: int SendCSCS(char *response)
+[v _SendCSCS `(i ~T0 @X0 1 ef1`*uc ]
 "84
-[; ;main.c: 84:             _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;sim800at.c: 84: {
+{
+[e :U _SendCSCS ]
+"83
+[; ;sim800at.c: 83: int SendCSCS(char *response)
+[v _response `*uc ~T0 @X0 1 r1 ]
+"84
+[; ;sim800at.c: 84: {
+[f ]
 "85
-[; ;main.c: 85:             do { LATCbits.LATC2 = 0; } while(0);
-[e :U 969 ]
-{
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-}
-[e :U 968 ]
+[; ;sim800at.c: 85:     int totalRead = 0;
+[v _totalRead `i ~T0 @X0 1 a ]
+[e = _totalRead -> 0 `i ]
 "86
-[; ;main.c: 86:             _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;sim800at.c: 86:     int charsRead = 0;
+[v _charsRead `i ~T0 @X0 1 a ]
+[e = _charsRead -> 0 `i ]
+[v F6749 `uc ~T0 @X0 -> 64 `i s ]
+[i F6749
+:U ..
 "87
-[; ;main.c: 87:         } else {
-}
-[e $U 970  ]
-[e :U 963 ]
-{
-"88
-[; ;main.c: 88:             do { LATCbits.LATC0 = 1; } while(0);
-[e :U 973 ]
-{
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-}
-[e :U 972 ]
+[; ;sim800at.c: 87:     char line[64] = "";
+-> 0 `c
+..
+]
+[v _line `uc ~T0 @X0 -> 64 `i a ]
+[e = _line F6749 ]
 "89
-[; ;main.c: 89:         }
-}
-[e :U 970 ]
+[; ;sim800at.c: 89:     EUSART_Write_String("AT+CSCS=\"GSM\"\r\n");
+[e ( _EUSART_Write_String (1 :s 3C ]
+"90
+[; ;sim800at.c: 90:     charsRead = EUSART_Read_String(line, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _line -> -> 64 `i `ui ]
 "91
-[; ;main.c: 91:         memset(responseArray, 0, sizeof responseArray);
-[e ( _memset (3 , , -> &U _responseArray `*v -> 0 `i -> # _responseArray `ui ]
+[; ;sim800at.c: 91:     strncpy(response, line, charsRead);
+[e ( _strncpy (3 , , _response -> &U _line `*Cuc -> _charsRead `ui ]
+"92
+[; ;sim800at.c: 92:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
 "93
-[; ;main.c: 93:         charsRead = SendCMGF(responseArray);
-[e = _charsRead ( _SendCMGF (1 &U _responseArray ]
+[; ;sim800at.c: 93:     charsRead = EUSART_Read_String(line, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _line -> -> 64 `i `ui ]
+"94
+[; ;sim800at.c: 94:     strncat(response,line,charsRead);
+[e ( _strncat (3 , , _response -> &U _line `*Cuc -> _charsRead `ui ]
 "95
-[; ;main.c: 95:         if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-[e $ ! == ( _strcmp (2 , -> &U _responseArray `*Cuc :s 2C -> 0 `i 974  ]
-{
-"96
-[; ;main.c: 96:             do { LATCbits.LATC2 = 1; } while(0);
-[e :U 977 ]
-{
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-}
-[e :U 976 ]
+[; ;sim800at.c: 95:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
 "97
-[; ;main.c: 97:             _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;sim800at.c: 97:     return totalRead;
+[e ) _totalRead ]
+[e $UE 944  ]
 "98
-[; ;main.c: 98:             do { LATCbits.LATC2 = 0; } while(0);
-[e :U 980 ]
-{
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-}
-[e :U 979 ]
-"99
-[; ;main.c: 99:             _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"100
-[; ;main.c: 100:         } else {
-}
-[e $U 981  ]
-[e :U 974 ]
-{
-"101
-[; ;main.c: 101:             do { LATCbits.LATC0 = 1; } while(0);
-[e :U 984 ]
-{
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-}
-[e :U 983 ]
-"102
-[; ;main.c: 102:         }
-}
-[e :U 981 ]
-"104
-[; ;main.c: 104:         memset(responseArray, 0, sizeof responseArray);
-[e ( _memset (3 , , -> &U _responseArray `*v -> 0 `i -> # _responseArray `ui ]
-"178
-[; ;main.c: 178:     }
-}
-[e :U 945 ]
-[e $U 946  ]
-[e :U 947 ]
-"179
-[; ;main.c: 179: }
+[; ;sim800at.c: 98: }
 [e :UE 944 ]
 }
-[a 1C 13 10 79 75 13 10 0 ]
-[a 2C 13 10 79 75 13 10 0 ]
+"114
+[; ;sim800at.c: 114: int SendTestMessage(char *response, char *message)
+[v _SendTestMessage `(i ~T0 @X0 1 ef2`*uc`*uc ]
+"115
+[; ;sim800at.c: 115: {
+{
+[e :U _SendTestMessage ]
+"114
+[; ;sim800at.c: 114: int SendTestMessage(char *response, char *message)
+[v _response `*uc ~T0 @X0 1 r1 ]
+[v _message `*uc ~T0 @X0 1 r2 ]
+"115
+[; ;sim800at.c: 115: {
+[f ]
+"116
+[; ;sim800at.c: 116:     int totalRead = 0;
+[v _totalRead `i ~T0 @X0 1 a ]
+[e = _totalRead -> 0 `i ]
+"117
+[; ;sim800at.c: 117:     int charsRead = 0;
+[v _charsRead `i ~T0 @X0 1 a ]
+[e = _charsRead -> 0 `i ]
+[v F6756 `uc ~T0 @X0 -> 64 `i s ]
+[i F6756
+:U ..
+"118
+[; ;sim800at.c: 118:     char line[64] = "";
+-> 0 `c
+..
+]
+[v _line `uc ~T0 @X0 -> 64 `i a ]
+[e = _line F6756 ]
+"120
+[; ;sim800at.c: 120:     EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
+[e ( _EUSART_Write_String (1 :s 4C ]
+"121
+[; ;sim800at.c: 121:     _delay((unsigned long)((500)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"122
+[; ;sim800at.c: 122:     charsRead = EUSART_Read_String(line, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _line -> -> 64 `i `ui ]
+"123
+[; ;sim800at.c: 123:     strncpy(response, line, charsRead);
+[e ( _strncpy (3 , , _response -> &U _line `*Cuc -> _charsRead `ui ]
+"124
+[; ;sim800at.c: 124:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
+"125
+[; ;sim800at.c: 125:     EUSART_Write_String("COOKIES\x1A");
+[e ( _EUSART_Write_String (1 :s 5C ]
+"126
+[; ;sim800at.c: 126:     charsRead = EUSART_Read_String(line, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _line -> -> 64 `i `ui ]
+"127
+[; ;sim800at.c: 127:     strncpy(response, line, charsRead);
+[e ( _strncpy (3 , , _response -> &U _line `*Cuc -> _charsRead `ui ]
+"128
+[; ;sim800at.c: 128:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
+"129
+[; ;sim800at.c: 129:     charsRead = EUSART_Read_String(line, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _line -> -> 64 `i `ui ]
+"130
+[; ;sim800at.c: 130:     strncpy(response, line, charsRead);
+[e ( _strncpy (3 , , _response -> &U _line `*Cuc -> _charsRead `ui ]
+"131
+[; ;sim800at.c: 131:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
+"133
+[; ;sim800at.c: 133:     return totalRead;
+[e ) _totalRead ]
+[e $UE 945  ]
+"134
+[; ;sim800at.c: 134: }
+[e :UE 945 ]
+}
+[a 5C 67 79 79 75 73 69 83 26 0 ]
+[a 1C 65 84 13 10 0 ]
+[a 2C 65 84 43 67 77 71 70 61 49 13 10 0 ]
+[a 3C 65 84 43 67 83 67 83 61 34 71 83 77 34 13 10 0 ]
+[a 4C 65 84 43 67 77 71 83 61 34 50 57 51 54 34 13 10 0 ]

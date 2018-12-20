@@ -10948,9 +10948,9 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 146 "./mcc_generated_files/pin_manager.h"
+# 166 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 158 "./mcc_generated_files/pin_manager.h"
+# 178 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -11031,18 +11031,8 @@ typedef uint32_t uint_fast32_t;
 # 53 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/ext_int.h" 1
-# 250 "./mcc_generated_files/ext_int.h"
+# 94 "./mcc_generated_files/ext_int.h"
 void EXT_INT_Initialize(void);
-# 272 "./mcc_generated_files/ext_int.h"
-void INT_ISR(void);
-# 296 "./mcc_generated_files/ext_int.h"
-void INT_CallBack(void);
-# 319 "./mcc_generated_files/ext_int.h"
-void INT_SetInterruptHandler(void (* InterruptHandler)(void));
-# 343 "./mcc_generated_files/ext_int.h"
-extern void (*INT_InterruptHandler)(void);
-# 367 "./mcc_generated_files/ext_int.h"
-void INT_DefaultInterruptHandler(void);
 # 54 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/eusart.h" 1
@@ -11266,41 +11256,95 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 46 "main.c" 2
 
+# 1 "./sim800at.h" 1
+# 15 "./sim800at.h"
+int SendAT(char *response);
+# 31 "./sim800at.h"
+int SendCBC(char *response);
+# 45 "./sim800at.h"
+int SendCMGF(char *response);
+# 59 "./sim800at.h"
+int SendCSCS(char *response);
+# 75 "./sim800at.h"
+int SendTestMessage(char *response, char *message);
+# 47 "main.c" 2
 
 
 
 
 
+
+void CookiesTest(void);
 
 void main(void) {
 
     SYSTEM_Initialize();
 
-    char read1[32] = "";
-    char read2[32] = "";
-    int charsRead = 0;
-
-
-
     while (1) {
-        EUSART_Write_String("AT\r\n");
-        charsRead = EUSART_Read_String(read1, 32);
-        charsRead = EUSART_Read_String(read1, 32);
-
-        if (strcmp(read1, "OK\r\n") == 0)
-        {
+        if (PORTCbits.RC1 == 1) {
             do { LATCbits.LATC2 = 1; } while(0);
+            do { LATCbits.LATC0 = 0; } while(0);
+            CookiesTest();
         } else {
             do { LATCbits.LATC0 = 1; } while(0);
+            do { LATCbits.LATC2 = 0; } while(0);
         }
-
-        EUSART_Write_String("AT+CBC\r\n");
-        charsRead = EUSART_Read_String(read1, 32);
-        charsRead = EUSART_Read_String(read1, 32);
-        charsRead = EUSART_Read_String(read2, 32);
-        charsRead = EUSART_Read_String(read2, 32);
-
-        charsRead = 0;
-# 147 "main.c"
     }
+}
+
+void CookiesTest() {
+    char responseArray[64] = "";
+    int charsRead = 0;
+
+    charsRead = SendAT(responseArray);
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        do { LATCbits.LATC2 = 1; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+        do { LATCbits.LATC2 = 0; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+    } else {
+        do { LATCbits.LATC0 = 1; } while(0);
+    }
+
+    memset(responseArray, 0, sizeof responseArray);
+
+    charsRead = SendCMGF(responseArray);
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        do { LATCbits.LATC2 = 1; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+        do { LATCbits.LATC2 = 0; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+    } else {
+        do { LATCbits.LATC0 = 1; } while(0);
+    }
+
+    memset(responseArray, 0, sizeof responseArray);
+
+    charsRead = SendCSCS(responseArray);
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        do { LATCbits.LATC2 = 1; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+        do { LATCbits.LATC2 = 0; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+    } else {
+        do { LATCbits.LATC0 = 1; } while(0);
+    }
+
+    memset(responseArray, 0, sizeof responseArray);
+
+    charsRead = SendTestMessage(responseArray, "TEST");
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        do { LATCbits.LATC2 = 1; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+        do { LATCbits.LATC2 = 0; } while(0);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+    } else {
+        do { LATCbits.LATC0 = 1; } while(0);
+    }
+
+    memset(responseArray, 0, sizeof responseArray);
 }

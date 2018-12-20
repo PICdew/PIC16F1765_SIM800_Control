@@ -44,107 +44,85 @@
 #include "mcc_generated_files/mcc.h"
 #include <stdio.h>
 #include <string.h>
-
-#define MAX_SIZE 32
+#include "sim800at.h"
 
 /*
                          Main application
  */
+
+void CookiesTest(void);
+
 void main(void) {
     // initialize the device
     SYSTEM_Initialize();
 
-    char read1[MAX_SIZE] = "";
-    char read2[MAX_SIZE] = "";
-    int charsRead = 0;
-
-    //unsigned int regClear = 0;
-
     while (1) {
-        EUSART_Write_String("AT\r\n");        
-        charsRead = EUSART_Read_String(read1, MAX_SIZE);
-        charsRead = EUSART_Read_String(read1, MAX_SIZE);
-        
-        if (strcmp(read1, "OK\r\n") == 0)
-        {
+        if (BTN1_PIN_GetValue() == 1) {
             LED_PIN_SetHigh();
+            ERROR_PIN_SetLow();
+            CookiesTest();
         } else {
             ERROR_PIN_SetHigh();
+            LED_PIN_SetLow();
         }
-        
-        EUSART_Write_String("AT+CBC\r\n");
-        charsRead = EUSART_Read_String(read1, MAX_SIZE);
-        charsRead = EUSART_Read_String(read1, MAX_SIZE);
-        charsRead = EUSART_Read_String(read2, MAX_SIZE); 
-        charsRead = EUSART_Read_String(read2, MAX_SIZE);
-        
-        charsRead = 0;
-        
-//        EUSART_Write_String("ATE0&W\n");      
-//        charsRead = EUSART_Read_String(read1, 16);
-//        charsRead = EUSART_Read_String(read2, 16);
-        
-//        do {
-//            EUSART_Write_String("AT\n");
-//            ch1 = EUSART_Read();
-//            ch2 = EUSART_Read();
-//        } while (ch1 != 'O' && ch2 != 'K');
-//
-//        LED_PIN_SetHigh();
-//
-//        while (!EUSART_is_rx_ready())
-//            continue;
-//        ch3 = EUSART_Read();
-//        
-//        while (!EUSART_is_rx_ready())
-//            continue;
-//        ch4 = EUSART_Read();
-//
-//        ch1 = 4;
-//        ch2 = 4;
-//        ch3 = 4;
-//        ch4 = 4;
-//
-//        do {
-//            EUSART_Write_String("AT+IPR=9600\n");
-//            ch1 = EUSART_Read();
-//            ch2 = EUSART_Read();
-//        } while (ch1 != 'O' && ch2 != 'K');
-//
-//        ERROR_PIN_SetHigh();
-//        
-//        while (!EUSART_is_rx_ready())
-//            continue;
-//        ch3 = EUSART_Read();
-//        
-//        while (!EUSART_is_rx_ready())
-//            continue;
-//        ch4 = EUSART_Read();
-//        
-//        ch1 = 4;
-//        ch2 = 4;
-//        ch3 = 4;
-//        ch4 = 4;
-//        
-//        do {
-//            EUSART_Write_String("AT&W\n");
-//            ch1 = EUSART_Read();
-//            ch2 = EUSART_Read();
-//        } while (ch1 != 'O' && ch2 != 'K');
-//        
-//        while (!EUSART_is_rx_ready())
-//            continue;
-//        ch3 = EUSART_Read();
-//        
-//        while (!EUSART_is_rx_ready())
-//            continue;
-//        ch4 = EUSART_Read();
-//        
-//        ch1 = 4;
-//        ch2 = 4;
-//        ch3 = 4;
-//        ch4 = 4;
     }
+}
+
+void CookiesTest() {
+    char responseArray[MAX_SIZE] = "";
+    int charsRead = 0;
+
+    charsRead = SendAT(responseArray);
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        LED_PIN_SetHigh();
+        __delay_ms(200);
+        LED_PIN_SetLow();
+        __delay_ms(200);
+    } else {
+        ERROR_PIN_SetHigh();
+    }
+
+    memset(responseArray, 0, sizeof responseArray);
+
+    charsRead = SendCMGF(responseArray);
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        LED_PIN_SetHigh();
+        __delay_ms(200);
+        LED_PIN_SetLow();
+        __delay_ms(200);
+    } else {
+        ERROR_PIN_SetHigh();
+    }
+
+    memset(responseArray, 0, sizeof responseArray);
+
+    charsRead = SendCSCS(responseArray);
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        LED_PIN_SetHigh();
+        __delay_ms(200);
+        LED_PIN_SetLow();
+        __delay_ms(200);
+    } else {
+        ERROR_PIN_SetHigh();
+    }
+
+    memset(responseArray, 0, sizeof responseArray);
+
+    charsRead = SendTestMessage(responseArray, "TEST");
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        LED_PIN_SetHigh();
+        __delay_ms(200);
+        LED_PIN_SetLow();
+        __delay_ms(200);
+    } else {
+        ERROR_PIN_SetHigh();
+    }
+
+    memset(responseArray, 0, sizeof responseArray);
 }
 
 /**

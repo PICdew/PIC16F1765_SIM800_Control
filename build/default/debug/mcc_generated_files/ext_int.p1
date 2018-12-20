@@ -1,41 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F6526 `(v ~T0 @X0 0 tf ]
-"357 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 357:     struct {
-[s S31 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S31 . IOCIF INTF TMR0IF IOCIE INTE TMR0IE PEIE GIE ]
-"367
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 367:     struct {
-[s S32 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S32 . . T0IF . T0IE ]
-"356
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 356: typedef union {
-[u S30 `S31 1 `S32 1 ]
-[n S30 . . . ]
-"374
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 374: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
-[v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
-"296 mcc_generated_files/ext_int.h
-[; ;mcc_generated_files/ext_int.h: 296: void INT_CallBack(void);
-[v _INT_CallBack `(v ~T0 @X0 0 ef ]
-[v F6529 `(v ~T0 @X0 0 tf ]
-[v F6531 `(v ~T0 @X0 0 tf ]
-[v F6533 `(v ~T0 @X0 0 tf ]
-"1958 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 1958:     struct {
-[s S109 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S109 . PS PSA TMR0SE TMR0CS INTEDG nWPUEN ]
-"1966
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 1966:     struct {
-[s S110 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S110 . PS0 PS1 PS2 . T0SE T0CS ]
-"1957
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 1957: typedef union {
-[u S108 `S109 1 `S110 1 ]
-[n S108 . . . ]
-"1975
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 1975: extern volatile OPTION_REGbits_t OPTION_REGbits __attribute__((address(0x095)));
-[v _OPTION_REGbits `VS108 ~T0 @X0 0 e@149 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1008,94 +971,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "19151
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 19151: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"30 mcc_generated_files/ext_int.c
-[; ;mcc_generated_files/ext_int.c: 30: void (*INT_InterruptHandler)(void);
-[v _INT_InterruptHandler `*F6526 ~T0 @X0 1 e ]
-"32
-[; ;mcc_generated_files/ext_int.c: 32: void INT_ISR(void)
-[v _INT_ISR `(v ~T0 @X0 1 ef ]
+"32 mcc_generated_files/ext_int.c
+[; ;mcc_generated_files/ext_int.c: 32: void EXT_INT_Initialize(void)
+[v _EXT_INT_Initialize `(v ~T0 @X0 1 ef ]
 "33
 [; ;mcc_generated_files/ext_int.c: 33: {
 {
-[e :U _INT_ISR ]
-[f ]
-"34
-[; ;mcc_generated_files/ext_int.c: 34:     (INTCONbits.INTF = 0);
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"37
-[; ;mcc_generated_files/ext_int.c: 37:     INT_CallBack();
-[e ( _INT_CallBack ..  ]
-"38
-[; ;mcc_generated_files/ext_int.c: 38: }
-[e :UE 941 ]
-}
-"41
-[; ;mcc_generated_files/ext_int.c: 41: void INT_CallBack(void)
-[v _INT_CallBack `(v ~T0 @X0 1 ef ]
-"42
-[; ;mcc_generated_files/ext_int.c: 42: {
-{
-[e :U _INT_CallBack ]
-[f ]
-"44
-[; ;mcc_generated_files/ext_int.c: 44:     if(INT_InterruptHandler)
-[e $ ! != _INT_InterruptHandler -> -> 0 `i `*F6529 943  ]
-"45
-[; ;mcc_generated_files/ext_int.c: 45:     {
-{
-"46
-[; ;mcc_generated_files/ext_int.c: 46:         INT_InterruptHandler();
-[e ( *U _INT_InterruptHandler ..  ]
-"47
-[; ;mcc_generated_files/ext_int.c: 47:     }
-}
-[e :U 943 ]
-"48
-[; ;mcc_generated_files/ext_int.c: 48: }
-[e :UE 942 ]
-}
-"50
-[; ;mcc_generated_files/ext_int.c: 50: void INT_SetInterruptHandler(void (* InterruptHandler)(void)){
-[v _INT_SetInterruptHandler `(v ~T0 @X0 1 ef1`*F6531 ]
-{
-[e :U _INT_SetInterruptHandler ]
-[v _InterruptHandler `*F6533 ~T0 @X0 1 r1 ]
-[f ]
-"51
-[; ;mcc_generated_files/ext_int.c: 51:     INT_InterruptHandler = InterruptHandler;
-[e = _INT_InterruptHandler _InterruptHandler ]
-"52
-[; ;mcc_generated_files/ext_int.c: 52: }
-[e :UE 944 ]
-}
-"54
-[; ;mcc_generated_files/ext_int.c: 54: void INT_DefaultInterruptHandler(void){
-[v _INT_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
-{
-[e :U _INT_DefaultInterruptHandler ]
-[f ]
-"57
-[; ;mcc_generated_files/ext_int.c: 57: }
-[e :UE 945 ]
-}
-"59
-[; ;mcc_generated_files/ext_int.c: 59: void EXT_INT_Initialize(void)
-[v _EXT_INT_Initialize `(v ~T0 @X0 1 ef ]
-"60
-[; ;mcc_generated_files/ext_int.c: 60: {
-{
 [e :U _EXT_INT_Initialize ]
 [f ]
-"64
-[; ;mcc_generated_files/ext_int.c: 64:     (INTCONbits.INTF = 0);
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"65
-[; ;mcc_generated_files/ext_int.c: 65:     (OPTION_REGbits.INTEDG = 1);
-[e = . . _OPTION_REGbits 0 4 -> -> 1 `i `uc ]
-"67
-[; ;mcc_generated_files/ext_int.c: 67:     INT_SetInterruptHandler(INT_DefaultInterruptHandler);
-[e ( _INT_SetInterruptHandler (1 &U _INT_DefaultInterruptHandler ]
-"69
-[; ;mcc_generated_files/ext_int.c: 69: }
-[e :UE 946 ]
+"34
+[; ;mcc_generated_files/ext_int.c: 34: }
+[e :UE 941 ]
 }
