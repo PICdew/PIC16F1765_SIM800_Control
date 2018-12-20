@@ -106,9 +106,9 @@ void PIN_MANAGER_Initialize(void)
     RC4PPS = 0x16;   //RC4->EUSART:TX;    
 }
   
-void PIN_MANAGER_IOC(void)
-{   
-}
+//void PIN_MANAGER_IOC(void)
+//{   
+//}
 
 /**
  End of File

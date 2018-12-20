@@ -11000,7 +11000,3 @@ void PIN_MANAGER_Initialize(void)
 
     RC4PPS = 0x16;
 }
-
-void PIN_MANAGER_IOC(void)
-{
-}

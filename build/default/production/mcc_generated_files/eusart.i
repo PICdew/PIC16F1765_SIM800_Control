@@ -11061,19 +11061,7 @@ void EUSART_Initialize(void) {
 
 
 }
-
-_Bool EUSART_is_tx_ready(void) {
-    return (_Bool) (PIR1bits.TXIF && TX1STAbits.TXEN);
-}
-
-_Bool EUSART_is_rx_ready(void) {
-    return PIR1bits.RCIF;
-}
-
-_Bool EUSART_is_tx_done(void) {
-    return TX1STAbits.TRMT;
-}
-
+# 88 "mcc_generated_files/eusart.c"
 uint8_t EUSART_Read(void) {
     while (!PIR1bits.RCIF) {
     }

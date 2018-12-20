@@ -73,17 +73,17 @@ void EUSART_Initialize(void) {
 
 }
 
-bool EUSART_is_tx_ready(void) {
-    return (bool) (PIR1bits.TXIF && TX1STAbits.TXEN);
-}
+//bool EUSART_is_tx_ready(void) {
+//    return (bool) (PIR1bits.TXIF && TX1STAbits.TXEN);
+//}
 
-bool EUSART_is_rx_ready(void) {
-    return PIR1bits.RCIF;
-}
+//bool EUSART_is_rx_ready(void) {
+//    return PIR1bits.RCIF;
+//}
 
-bool EUSART_is_tx_done(void) {
-    return TX1STAbits.TRMT;
-}
+//bool EUSART_is_tx_done(void) {
+//    return TX1STAbits.TRMT;
+//}
 
 uint8_t EUSART_Read(void) {
     while (!PIR1bits.RCIF) {

@@ -74,8 +74,8 @@ int SendCSCS(char *response);
  */
 int SendTestMessage(char *response, char *message);
 
-int SendBtn1Message(char *response, char *line);
+int SendBtn1Message(char *response);
 
-int SendBtn2Message(char *response, char *line);
+int SendBtn2Message(char *response);
 
-int SendBtn3Message(char *response, char *line);
+int SendBtn3Message(char *response);

@@ -29,17 +29,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "558
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 558: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x011)));
 [v _PIR1bits `VS38 ~T0 @X0 0 e@17 ]
-"3970
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 3970:     struct {
-[s S227 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S227 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
-"3969
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 3969: typedef union {
-[u S226 `S227 1 ]
-[n S226 . . ]
-"3981
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 3981: extern volatile TX1STAbits_t TX1STAbits __attribute__((address(0x19E)));
-[v _TX1STAbits `VS226 ~T0 @X0 0 e@414 ]
 "3790
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 3790:     struct {
 [s S221 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -1054,48 +1043,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/eusart.c: 74: }
 [e :UE 941 ]
 }
-"76
-[; ;mcc_generated_files/eusart.c: 76: _Bool EUSART_is_tx_ready(void) {
-[v _EUSART_is_tx_ready `(a ~T0 @X0 1 ef ]
-{
-[e :U _EUSART_is_tx_ready ]
-[f ]
-"77
-[; ;mcc_generated_files/eusart.c: 77:     return (_Bool) (PIR1bits.TXIF && TX1STAbits.TXEN);
-[e ) -> -> && != -> . . _PIR1bits 0 4 `i -> 0 `i != -> . . _TX1STAbits 0 5 `i -> 0 `i `i `a ]
-[e $UE 942  ]
-"78
-[; ;mcc_generated_files/eusart.c: 78: }
-[e :UE 942 ]
-}
-"80
-[; ;mcc_generated_files/eusart.c: 80: _Bool EUSART_is_rx_ready(void) {
-[v _EUSART_is_rx_ready `(a ~T0 @X0 1 ef ]
-{
-[e :U _EUSART_is_rx_ready ]
-[f ]
-"81
-[; ;mcc_generated_files/eusart.c: 81:     return PIR1bits.RCIF;
-[e ) -> . . _PIR1bits 0 5 `a ]
-[e $UE 943  ]
-"82
-[; ;mcc_generated_files/eusart.c: 82: }
-[e :UE 943 ]
-}
-"84
-[; ;mcc_generated_files/eusart.c: 84: _Bool EUSART_is_tx_done(void) {
-[v _EUSART_is_tx_done `(a ~T0 @X0 1 ef ]
-{
-[e :U _EUSART_is_tx_done ]
-[f ]
-"85
-[; ;mcc_generated_files/eusart.c: 85:     return TX1STAbits.TRMT;
-[e ) -> . . _TX1STAbits 0 1 `a ]
-[e $UE 944  ]
-"86
-[; ;mcc_generated_files/eusart.c: 86: }
-[e :UE 944 ]
-}
 "88
 [; ;mcc_generated_files/eusart.c: 88: uint8_t EUSART_Read(void) {
 [v _EUSART_Read `(uc ~T0 @X0 1 ef ]
@@ -1104,20 +1051,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "89
 [; ;mcc_generated_files/eusart.c: 89:     while (!PIR1bits.RCIF) {
-[e $U 946  ]
-[e :U 947 ]
+[e $U 943  ]
+[e :U 944 ]
 {
 "90
 [; ;mcc_generated_files/eusart.c: 90:     }
 }
-[e :U 946 ]
+[e :U 943 ]
 "89
 [; ;mcc_generated_files/eusart.c: 89:     while (!PIR1bits.RCIF) {
-[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 947  ]
-[e :U 948 ]
+[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 944  ]
+[e :U 945 ]
 "93
 [; ;mcc_generated_files/eusart.c: 93:     if (1 == RC1STAbits.OERR) {
-[e $ ! == -> 1 `i -> . . _RC1STAbits 0 1 `i 949  ]
+[e $ ! == -> 1 `i -> . . _RC1STAbits 0 1 `i 946  ]
 {
 "96
 [; ;mcc_generated_files/eusart.c: 96:         RC1STAbits.CREN = 0;
@@ -1128,14 +1075,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "98
 [; ;mcc_generated_files/eusart.c: 98:     }
 }
-[e :U 949 ]
+[e :U 946 ]
 "100
 [; ;mcc_generated_files/eusart.c: 100:     return RC1REG;
 [e ) _RC1REG ]
-[e $UE 945  ]
+[e $UE 942  ]
 "101
 [; ;mcc_generated_files/eusart.c: 101: }
-[e :UE 945 ]
+[e :UE 942 ]
 }
 "103
 [; ;mcc_generated_files/eusart.c: 103: void EUSART_Write(uint8_t txData) {
@@ -1146,23 +1093,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "104
 [; ;mcc_generated_files/eusart.c: 104:     while (0 == PIR1bits.TXIF) {
-[e $U 951  ]
-[e :U 952 ]
+[e $U 948  ]
+[e :U 949 ]
 {
 "105
 [; ;mcc_generated_files/eusart.c: 105:     }
 }
-[e :U 951 ]
+[e :U 948 ]
 "104
 [; ;mcc_generated_files/eusart.c: 104:     while (0 == PIR1bits.TXIF) {
-[e $ == -> 0 `i -> . . _PIR1bits 0 4 `i 952  ]
-[e :U 953 ]
+[e $ == -> 0 `i -> . . _PIR1bits 0 4 `i 949  ]
+[e :U 950 ]
 "107
 [; ;mcc_generated_files/eusart.c: 107:     TX1REG = txData;
 [e = _TX1REG _txData ]
 "108
 [; ;mcc_generated_files/eusart.c: 108: }
-[e :UE 950 ]
+[e :UE 947 ]
 }
 "110
 [; ;mcc_generated_files/eusart.c: 110: void EUSART_Write_String(char *s)
@@ -1179,8 +1126,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "112
 [; ;mcc_generated_files/eusart.c: 112:     while(*s)
-[e $U 955  ]
-[e :U 956 ]
+[e $U 952  ]
+[e :U 953 ]
 "113
 [; ;mcc_generated_files/eusart.c: 113:     {
 {
@@ -1193,14 +1140,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "116
 [; ;mcc_generated_files/eusart.c: 116:     }
 }
-[e :U 955 ]
+[e :U 952 ]
 "112
 [; ;mcc_generated_files/eusart.c: 112:     while(*s)
-[e $ != -> *U _s `i -> 0 `i 956  ]
-[e :U 957 ]
+[e $ != -> *U _s `i -> 0 `i 953  ]
+[e :U 954 ]
 "117
 [; ;mcc_generated_files/eusart.c: 117: }
-[e :UE 954 ]
+[e :UE 951 ]
 }
 "119
 [; ;mcc_generated_files/eusart.c: 119: int EUSART_Read_String(char *s, unsigned int max_length)
@@ -1230,8 +1177,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _seenNL -> -> 0 `i `ui ]
 "125
 [; ;mcc_generated_files/eusart.c: 125:     while (i < max_length)
-[e $U 959  ]
-[e :U 960 ]
+[e $U 956  ]
+[e :U 957 ]
 "126
 [; ;mcc_generated_files/eusart.c: 126:     {
 {
@@ -1241,7 +1188,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _c -> ( _EUSART_Read ..  `uc ]
 "129
 [; ;mcc_generated_files/eusart.c: 129:         if (c == '\r')
-[e $ ! == -> _c `ui -> 13 `ui 962  ]
+[e $ ! == -> _c `ui -> 13 `ui 959  ]
 "130
 [; ;mcc_generated_files/eusart.c: 130:         {
 {
@@ -1251,9 +1198,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "132
 [; ;mcc_generated_files/eusart.c: 132:         } else if (c == '\n')
 }
-[e $U 963  ]
-[e :U 962 ]
-[e $ ! == -> _c `ui -> 10 `ui 964  ]
+[e $U 960  ]
+[e :U 959 ]
+[e $ ! == -> _c `ui -> 10 `ui 961  ]
 "133
 [; ;mcc_generated_files/eusart.c: 133:         {
 {
@@ -1263,8 +1210,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "135
 [; ;mcc_generated_files/eusart.c: 135:         }
 }
-[e :U 964 ]
-[e :U 963 ]
+[e :U 961 ]
+[e :U 960 ]
 "137
 [; ;mcc_generated_files/eusart.c: 137:         *s = c;
 [e = *U _s _c ]
@@ -1276,28 +1223,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _i -> 1 `i ]
 "141
 [; ;mcc_generated_files/eusart.c: 141:         if (seenCR && seenNL) {
-[e $ ! && != _seenCR -> -> 0 `i `ui != _seenNL -> -> 0 `i `ui 965  ]
+[e $ ! && != _seenCR -> -> 0 `i `ui != _seenNL -> -> 0 `i `ui 962  ]
 {
 "142
 [; ;mcc_generated_files/eusart.c: 142:             break;
-[e $U 961  ]
+[e $U 958  ]
 "143
 [; ;mcc_generated_files/eusart.c: 143:         }
 }
-[e :U 965 ]
+[e :U 962 ]
 "144
 [; ;mcc_generated_files/eusart.c: 144:     }
 }
-[e :U 959 ]
+[e :U 956 ]
 "125
 [; ;mcc_generated_files/eusart.c: 125:     while (i < max_length)
-[e $ < -> _i `ui _max_length 960  ]
-[e :U 961 ]
+[e $ < -> _i `ui _max_length 957  ]
+[e :U 958 ]
 "146
 [; ;mcc_generated_files/eusart.c: 146:     return i;
 [e ) _i ]
-[e $UE 958  ]
+[e $UE 955  ]
 "147
 [; ;mcc_generated_files/eusart.c: 147: }
-[e :UE 958 ]
+[e :UE 955 ]
 }

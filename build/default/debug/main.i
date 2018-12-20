@@ -11268,11 +11268,11 @@ int SendCSCS(char *response);
 # 75 "./sim800at.h"
 int SendTestMessage(char *response, char *message);
 
-int SendBtn1Message(char *response, char *line);
+int SendBtn1Message(char *response);
 
-int SendBtn2Message(char *response, char *line);
+int SendBtn2Message(char *response);
 
-int SendBtn3Message(char *response, char *line);
+int SendBtn3Message(char *response);
 # 47 "main.c" 2
 
 
@@ -11284,6 +11284,7 @@ void CookiesTest(char *responseArray, int charsRead);
 void Button1Message(char *responseArray, int charsRead, char *line);
 void Button2Message(char *responseArray, int charsRead, char *line);
 void Button3Message(char *responseArray, int charsRead, char *line);
+void FirstTimeSync(void);
 
 void FlashPin() {
     do { LATAbits.LATA4 = 1; } while(0);
@@ -11307,6 +11308,13 @@ void main(void) {
 
             do { LATAbits.LATA4 = 1; } while(0);
             Button1Message(responseArray, charsRead, lineArray);
+
+
+
+
+
+
+
         }
 
         if (PORTCbits.RC2 == 1) {
@@ -11335,85 +11343,75 @@ void WarningFlash() {
 }
 
 void PreMessageSetup(char *responseArray, int charsRead) {
-    charsRead = SendAT(responseArray);
+    char intArr[8] = "";
+    charsRead = SendAT(intArr);
 
-    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+    if (strstr(intArr, "OK\r\n") != ((void*)0)) {
         _delay((unsigned long)((200)*(16000000/4000.0)));
     } else {
         WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof(char) * 64);
+    memset(intArr, 0, sizeof (char) * 64);
 
-    charsRead = SendCMGF(responseArray);
+    charsRead = SendCMGF(intArr);
 
-    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+    if (strstr(intArr, "OK\r\n") != ((void*)0)) {
         _delay((unsigned long)((200)*(16000000/4000.0)));
     } else {
         WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof(char) * 64);
+    memset(intArr, 0, sizeof (char) * 64);
 
-    charsRead = SendCSCS(responseArray);
+    charsRead = SendCSCS(intArr);
 
-    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+    if (strstr(intArr, "OK\r\n") != ((void*)0)) {
         _delay((unsigned long)((200)*(16000000/4000.0)));
     } else {
         WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof(char) * 64);
+    memset(intArr, 0, sizeof (char) * 64);
 }
 
 void Button1Message(char *responseArray, int charsRead, char *line) {
     PreMessageSetup(responseArray, charsRead);
 
-    charsRead = SendBtn1Message(responseArray, line);
+    char intArr[32] = "";
 
-    if (strcmp(responseArray, "\r\n") == 0) {
+    charsRead = SendBtn1Message(intArr);
+
+    if (strstr(intArr, "MGS") != ((void*)0)) {
     } else {
         WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof(char) * 64);
+    memset(responseArray, 0, sizeof (char) * 64);
 }
 
 void Button2Message(char *responseArray, int charsRead, char *line) {
     PreMessageSetup(responseArray, charsRead);
 
-    charsRead = SendBtn2Message(responseArray, line);
+    charsRead = SendBtn2Message(responseArray);
 
-    if (strcmp(responseArray, "\r\n") == 0) {
+    if (strstr(responseArray, "MGS") != ((void*)0)) {
     } else {
         WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof(char) * 64);
+    memset(responseArray, 0, sizeof (char) * 64);
 }
 
 void Button3Message(char *responseArray, int charsRead, char *line) {
     PreMessageSetup(responseArray, charsRead);
 
-    charsRead = SendBtn3Message(responseArray, line);
+    charsRead = SendBtn3Message(responseArray);
 
-    if (strcmp(responseArray, "\r\n") == 0) {
+    if (strstr(responseArray, "MGS") != ((void*)0)) {
     } else {
         WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof(char) * 64);
-}
-
-void CookiesTest(char *responseArray, int charsRead) {
-    PreMessageSetup(responseArray, charsRead);
-
-    charsRead = SendTestMessage(responseArray, "COOKIES\x1A");
-
-    if (strcmp(responseArray, "\r\n") == 0) {
-    } else {
-        WarningFlash();
-    }
-
-    memset(responseArray, 0, sizeof(char) * 64);
+    memset(responseArray, 0, sizeof (char) * 64);
 }

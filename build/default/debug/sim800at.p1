@@ -1008,8 +1008,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;sim800at.c: 28:     int charsRead = 0;
 [v _charsRead `i ~T0 @X0 1 a ]
 [e = _charsRead -> 0 `i ]
-[v F6746 `uc ~T0 @X0 -> 64 `i s ]
-[i F6746
+[v F6743 `uc ~T0 @X0 -> 64 `i s ]
+[i F6743
 :U ..
 "29
 [; ;sim800at.c: 29:     char line[64] = "";
@@ -1017,7 +1017,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _line `uc ~T0 @X0 -> 64 `i a ]
-[e = _line F6746 ]
+[e = _line F6743 ]
 "31
 [; ;sim800at.c: 31:     EUSART_Write_String("AT\r\n");
 [e ( _EUSART_Write_String (1 :s 1C ]
@@ -1068,8 +1068,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;sim800at.c: 57:     int charsRead = 0;
 [v _charsRead `i ~T0 @X0 1 a ]
 [e = _charsRead -> 0 `i ]
-[v F6752 `uc ~T0 @X0 -> 64 `i s ]
-[i F6752
+[v F6749 `uc ~T0 @X0 -> 64 `i s ]
+[i F6749
 :U ..
 "58
 [; ;sim800at.c: 58:     char line[64] = "";
@@ -1077,7 +1077,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _line `uc ~T0 @X0 -> 64 `i a ]
-[e = _line F6752 ]
+[e = _line F6749 ]
 "60
 [; ;sim800at.c: 60:     EUSART_Write_String("AT+CMGF=1\r\n");
 [e ( _EUSART_Write_String (1 :s 2C ]
@@ -1128,8 +1128,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;sim800at.c: 86:     int charsRead = 0;
 [v _charsRead `i ~T0 @X0 1 a ]
 [e = _charsRead -> 0 `i ]
-[v F6758 `uc ~T0 @X0 -> 64 `i s ]
-[i F6758
+[v F6755 `uc ~T0 @X0 -> 64 `i s ]
+[i F6755
 :U ..
 "87
 [; ;sim800at.c: 87:     char line[64] = "";
@@ -1137,7 +1137,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _line `uc ~T0 @X0 -> 64 `i a ]
-[e = _line F6758 ]
+[e = _line F6755 ]
 "89
 [; ;sim800at.c: 89:     EUSART_Write_String("AT+CSCS=\"GSM\"\r\n");
 [e ( _EUSART_Write_String (1 :s 3C ]
@@ -1167,83 +1167,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;sim800at.c: 98: }
 [e :UE 944 ]
 }
-"114
-[; ;sim800at.c: 114: int SendTestMessage(char *response, char *line)
-[v _SendTestMessage `(i ~T0 @X0 1 ef2`*uc`*uc ]
-"115
-[; ;sim800at.c: 115: {
-{
-[e :U _SendTestMessage ]
-"114
-[; ;sim800at.c: 114: int SendTestMessage(char *response, char *line)
-[v _response `*uc ~T0 @X0 1 r1 ]
-[v _line `*uc ~T0 @X0 1 r2 ]
-"115
-[; ;sim800at.c: 115: {
-[f ]
-"116
-[; ;sim800at.c: 116:     int totalRead = 0;
-[v _totalRead `i ~T0 @X0 1 a ]
-[e = _totalRead -> 0 `i ]
-"117
-[; ;sim800at.c: 117:     int charsRead = 0;
-[v _charsRead `i ~T0 @X0 1 a ]
-[e = _charsRead -> 0 `i ]
-"119
-[; ;sim800at.c: 119:     EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
-[e ( _EUSART_Write_String (1 :s 4C ]
-"120
-[; ;sim800at.c: 120:     _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"121
-[; ;sim800at.c: 121:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
-"122
-[; ;sim800at.c: 122:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
-"123
-[; ;sim800at.c: 123:     totalRead += charsRead;
-[e =+ _totalRead _charsRead ]
-"124
-[; ;sim800at.c: 124:     EUSART_Write_String("COOKIES\x1A");
-[e ( _EUSART_Write_String (1 :s 5C ]
-"125
-[; ;sim800at.c: 125:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
-"126
-[; ;sim800at.c: 126:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
-"127
-[; ;sim800at.c: 127:     totalRead += charsRead;
-[e =+ _totalRead _charsRead ]
-"128
-[; ;sim800at.c: 128:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
-"129
-[; ;sim800at.c: 129:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
-"130
-[; ;sim800at.c: 130:     totalRead += charsRead;
-[e =+ _totalRead _charsRead ]
-"132
-[; ;sim800at.c: 132:     return totalRead;
-[e ) _totalRead ]
-[e $UE 945  ]
-"133
-[; ;sim800at.c: 133: }
-[e :UE 945 ]
-}
 "135
-[; ;sim800at.c: 135: int SendBtn1Message(char *response, char *line)
-[v _SendBtn1Message `(i ~T0 @X0 1 ef2`*uc`*uc ]
+[; ;sim800at.c: 135: int SendBtn1Message(char *response)
+[v _SendBtn1Message `(i ~T0 @X0 1 ef1`*uc ]
 "136
 [; ;sim800at.c: 136: {
 {
 [e :U _SendBtn1Message ]
 "135
-[; ;sim800at.c: 135: int SendBtn1Message(char *response, char *line)
+[; ;sim800at.c: 135: int SendBtn1Message(char *response)
 [v _response `*uc ~T0 @X0 1 r1 ]
-[v _line `*uc ~T0 @X0 1 r2 ]
 "136
 [; ;sim800at.c: 136: {
 [f ]
@@ -1255,190 +1188,225 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;sim800at.c: 138:     int charsRead = 0;
 [v _charsRead `i ~T0 @X0 1 a ]
 [e = _charsRead -> 0 `i ]
-"140
-[; ;sim800at.c: 140:     EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
-[e ( _EUSART_Write_String (1 :s 6C ]
+[v F6761 `uc ~T0 @X0 -> 16 `i s ]
+[i F6761
+:U ..
+"139
+[; ;sim800at.c: 139:     char intline[16] = "";
+-> 0 `c
+..
+]
+[v _intline `uc ~T0 @X0 -> 16 `i a ]
+[e = _intline F6761 ]
 "141
-[; ;sim800at.c: 141:     _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;sim800at.c: 141:     EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
+[e ( _EUSART_Write_String (1 :s 4C ]
 "142
-[; ;sim800at.c: 142:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
+[; ;sim800at.c: 142:     charsRead = EUSART_Read_String(intline, 16);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _intline -> -> 16 `i `ui ]
 "143
-[; ;sim800at.c: 143:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
+[; ;sim800at.c: 143:     strncpy(response, intline, charsRead);
+[e ( _strncpy (3 , , _response -> &U _intline `*Cuc -> _charsRead `ui ]
 "144
 [; ;sim800at.c: 144:     totalRead += charsRead;
 [e =+ _totalRead _charsRead ]
 "145
 [; ;sim800at.c: 145:     EUSART_Write_String("BTN_1\x1A");
-[e ( _EUSART_Write_String (1 :s 7C ]
+[e ( _EUSART_Write_String (1 :s 5C ]
 "146
-[; ;sim800at.c: 146:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
+[; ;sim800at.c: 146:     _delay((unsigned long)((200)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "147
-[; ;sim800at.c: 147:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
+[; ;sim800at.c: 147:     charsRead = EUSART_Read_String(intline, 16);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _intline -> -> 16 `i `ui ]
 "148
-[; ;sim800at.c: 148:     totalRead += charsRead;
-[e =+ _totalRead _charsRead ]
+[; ;sim800at.c: 148:     strncat(response, intline, charsRead);
+[e ( _strncat (3 , , _response -> &U _intline `*Cuc -> _charsRead `ui ]
 "149
-[; ;sim800at.c: 149:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
+[; ;sim800at.c: 149:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
 "150
-[; ;sim800at.c: 150:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
+[; ;sim800at.c: 150:     charsRead = EUSART_Read_String(intline, 16);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _intline -> -> 16 `i `ui ]
 "151
-[; ;sim800at.c: 151:     totalRead += charsRead;
+[; ;sim800at.c: 151:     strncat(response, intline, charsRead);
+[e ( _strncat (3 , , _response -> &U _intline `*Cuc -> _charsRead `ui ]
+"152
+[; ;sim800at.c: 152:     totalRead += charsRead;
 [e =+ _totalRead _charsRead ]
 "153
-[; ;sim800at.c: 153:     return totalRead;
-[e ) _totalRead ]
-[e $UE 946  ]
+[; ;sim800at.c: 153:     charsRead = EUSART_Read_String(intline, 16);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _intline -> -> 16 `i `ui ]
 "154
-[; ;sim800at.c: 154: }
-[e :UE 946 ]
-}
-"156
-[; ;sim800at.c: 156: int SendBtn2Message(char *response, char *line)
-[v _SendBtn2Message `(i ~T0 @X0 1 ef2`*uc`*uc ]
+[; ;sim800at.c: 154:     strncat(response, intline, charsRead);
+[e ( _strncat (3 , , _response -> &U _intline `*Cuc -> _charsRead `ui ]
+"155
+[; ;sim800at.c: 155:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
 "157
-[; ;sim800at.c: 157: {
+[; ;sim800at.c: 157:     return totalRead;
+[e ) _totalRead ]
+[e $UE 945  ]
+"158
+[; ;sim800at.c: 158: }
+[e :UE 945 ]
+}
+"160
+[; ;sim800at.c: 160: int SendBtn2Message(char *response)
+[v _SendBtn2Message `(i ~T0 @X0 1 ef1`*uc ]
+"161
+[; ;sim800at.c: 161: {
 {
 [e :U _SendBtn2Message ]
-"156
-[; ;sim800at.c: 156: int SendBtn2Message(char *response, char *line)
+"160
+[; ;sim800at.c: 160: int SendBtn2Message(char *response)
 [v _response `*uc ~T0 @X0 1 r1 ]
-[v _line `*uc ~T0 @X0 1 r2 ]
-"157
-[; ;sim800at.c: 157: {
+"161
+[; ;sim800at.c: 161: {
 [f ]
-"158
-[; ;sim800at.c: 158:     int totalRead = 0;
+"162
+[; ;sim800at.c: 162:     int totalRead = 0;
 [v _totalRead `i ~T0 @X0 1 a ]
 [e = _totalRead -> 0 `i ]
-"159
-[; ;sim800at.c: 159:     int charsRead = 0;
+"163
+[; ;sim800at.c: 163:     int charsRead = 0;
 [v _charsRead `i ~T0 @X0 1 a ]
 [e = _charsRead -> 0 `i ]
-"161
-[; ;sim800at.c: 161:     EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
-[e ( _EUSART_Write_String (1 :s 8C ]
-"162
-[; ;sim800at.c: 162:     _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"163
-[; ;sim800at.c: 163:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
+[v F6767 `uc ~T0 @X0 -> 16 `i s ]
+[i F6767
+:U ..
 "164
-[; ;sim800at.c: 164:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
-"165
-[; ;sim800at.c: 165:     totalRead += charsRead;
-[e =+ _totalRead _charsRead ]
+[; ;sim800at.c: 164:     char intline[16] = "";
+-> 0 `c
+..
+]
+[v _intline `uc ~T0 @X0 -> 16 `i a ]
+[e = _intline F6767 ]
 "166
-[; ;sim800at.c: 166:     EUSART_Write_String("BTN_2\x1A");
-[e ( _EUSART_Write_String (1 :s 9C ]
+[; ;sim800at.c: 166:     EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
+[e ( _EUSART_Write_String (1 :s 6C ]
 "167
-[; ;sim800at.c: 167:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
+[; ;sim800at.c: 167:     _delay((unsigned long)((500)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "168
-[; ;sim800at.c: 168:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
+[; ;sim800at.c: 168:     charsRead = EUSART_Read_String(intline, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _intline -> -> 64 `i `ui ]
 "169
-[; ;sim800at.c: 169:     totalRead += charsRead;
-[e =+ _totalRead _charsRead ]
+[; ;sim800at.c: 169:     strncpy(response, intline, charsRead);
+[e ( _strncpy (3 , , _response -> &U _intline `*Cuc -> _charsRead `ui ]
 "170
-[; ;sim800at.c: 170:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
-"171
-[; ;sim800at.c: 171:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
-"172
-[; ;sim800at.c: 172:     totalRead += charsRead;
+[; ;sim800at.c: 170:     totalRead += charsRead;
 [e =+ _totalRead _charsRead ]
+"171
+[; ;sim800at.c: 171:     EUSART_Write_String("BTN_2\x1A");
+[e ( _EUSART_Write_String (1 :s 7C ]
+"172
+[; ;sim800at.c: 172:     charsRead = EUSART_Read_String(intline, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _intline -> -> 64 `i `ui ]
+"173
+[; ;sim800at.c: 173:     strncat(response, intline, charsRead);
+[e ( _strncat (3 , , _response -> &U _intline `*Cuc -> _charsRead `ui ]
 "174
-[; ;sim800at.c: 174:     return totalRead;
-[e ) _totalRead ]
-[e $UE 947  ]
+[; ;sim800at.c: 174:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
 "175
-[; ;sim800at.c: 175: }
-[e :UE 947 ]
-}
+[; ;sim800at.c: 175:     charsRead = EUSART_Read_String(intline, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _intline -> -> 64 `i `ui ]
+"176
+[; ;sim800at.c: 176:     strncat(response, intline, charsRead);
+[e ( _strncat (3 , , _response -> &U _intline `*Cuc -> _charsRead `ui ]
 "177
-[; ;sim800at.c: 177: int SendBtn3Message(char *response, char *line)
-[v _SendBtn3Message `(i ~T0 @X0 1 ef2`*uc`*uc ]
-"178
-[; ;sim800at.c: 178: {
+[; ;sim800at.c: 177:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
+"179
+[; ;sim800at.c: 179:     return totalRead;
+[e ) _totalRead ]
+[e $UE 946  ]
+"180
+[; ;sim800at.c: 180: }
+[e :UE 946 ]
+}
+"182
+[; ;sim800at.c: 182: int SendBtn3Message(char *response)
+[v _SendBtn3Message `(i ~T0 @X0 1 ef1`*uc ]
+"183
+[; ;sim800at.c: 183: {
 {
 [e :U _SendBtn3Message ]
-"177
-[; ;sim800at.c: 177: int SendBtn3Message(char *response, char *line)
+"182
+[; ;sim800at.c: 182: int SendBtn3Message(char *response)
 [v _response `*uc ~T0 @X0 1 r1 ]
-[v _line `*uc ~T0 @X0 1 r2 ]
-"178
-[; ;sim800at.c: 178: {
+"183
+[; ;sim800at.c: 183: {
 [f ]
-"179
-[; ;sim800at.c: 179:     int totalRead = 0;
+"184
+[; ;sim800at.c: 184:     int totalRead = 0;
 [v _totalRead `i ~T0 @X0 1 a ]
 [e = _totalRead -> 0 `i ]
-"180
-[; ;sim800at.c: 180:     int charsRead = 0;
+"185
+[; ;sim800at.c: 185:     int charsRead = 0;
 [v _charsRead `i ~T0 @X0 1 a ]
 [e = _charsRead -> 0 `i ]
-"182
-[; ;sim800at.c: 182:     EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
-[e ( _EUSART_Write_String (1 :s 10C ]
-"183
-[; ;sim800at.c: 183:     _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"184
-[; ;sim800at.c: 184:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
-"185
-[; ;sim800at.c: 185:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
+[v F6773 `uc ~T0 @X0 -> 16 `i s ]
+[i F6773
+:U ..
 "186
-[; ;sim800at.c: 186:     totalRead += charsRead;
-[e =+ _totalRead _charsRead ]
-"187
-[; ;sim800at.c: 187:     EUSART_Write_String("BTN_3\x1A");
-[e ( _EUSART_Write_String (1 :s 11C ]
+[; ;sim800at.c: 186:     char intline[16] = "";
+-> 0 `c
+..
+]
+[v _intline `uc ~T0 @X0 -> 16 `i a ]
+[e = _intline F6773 ]
 "188
-[; ;sim800at.c: 188:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
+[; ;sim800at.c: 188:     EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
+[e ( _EUSART_Write_String (1 :s 8C ]
 "189
-[; ;sim800at.c: 189:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
+[; ;sim800at.c: 189:     _delay((unsigned long)((500)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "190
-[; ;sim800at.c: 190:     totalRead += charsRead;
-[e =+ _totalRead _charsRead ]
+[; ;sim800at.c: 190:     charsRead = EUSART_Read_String(intline, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _intline -> -> 64 `i `ui ]
 "191
-[; ;sim800at.c: 191:     charsRead = EUSART_Read_String(line, 64);
-[e = _charsRead ( _EUSART_Read_String (2 , _line -> -> 64 `i `ui ]
+[; ;sim800at.c: 191:     strncpy(response, intline, charsRead);
+[e ( _strncpy (3 , , _response -> &U _intline `*Cuc -> _charsRead `ui ]
 "192
-[; ;sim800at.c: 192:     strncpy(response, line, charsRead);
-[e ( _strncpy (3 , , _response -> _line `*Cuc -> _charsRead `ui ]
-"193
-[; ;sim800at.c: 193:     totalRead += charsRead;
+[; ;sim800at.c: 192:     totalRead += charsRead;
 [e =+ _totalRead _charsRead ]
+"193
+[; ;sim800at.c: 193:     EUSART_Write_String("BTN_3\x1A");
+[e ( _EUSART_Write_String (1 :s 9C ]
+"194
+[; ;sim800at.c: 194:     charsRead = EUSART_Read_String(intline, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _intline -> -> 64 `i `ui ]
 "195
-[; ;sim800at.c: 195:     return totalRead;
-[e ) _totalRead ]
-[e $UE 948  ]
+[; ;sim800at.c: 195:     strncat(response, intline, charsRead);
+[e ( _strncat (3 , , _response -> &U _intline `*Cuc -> _charsRead `ui ]
 "196
-[; ;sim800at.c: 196: }
-[e :UE 948 ]
+[; ;sim800at.c: 196:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
+"197
+[; ;sim800at.c: 197:     charsRead = EUSART_Read_String(intline, 64);
+[e = _charsRead ( _EUSART_Read_String (2 , &U _intline -> -> 64 `i `ui ]
+"198
+[; ;sim800at.c: 198:     strncat(response, intline, charsRead);
+[e ( _strncat (3 , , _response -> &U _intline `*Cuc -> _charsRead `ui ]
+"199
+[; ;sim800at.c: 199:     totalRead += charsRead;
+[e =+ _totalRead _charsRead ]
+"201
+[; ;sim800at.c: 201:     return totalRead;
+[e ) _totalRead ]
+[e $UE 947  ]
+"202
+[; ;sim800at.c: 202: }
+[e :UE 947 ]
 }
-[a 5C 67 79 79 75 73 69 83 26 0 ]
-[a 11C 66 84 78 95 51 26 0 ]
-[a 9C 66 84 78 95 50 26 0 ]
-[a 7C 66 84 78 95 49 26 0 ]
+[a 9C 66 84 78 95 51 26 0 ]
+[a 7C 66 84 78 95 50 26 0 ]
+[a 5C 66 84 78 95 49 26 0 ]
 [a 1C 65 84 13 10 0 ]
 [a 2C 65 84 43 67 77 71 70 61 49 13 10 0 ]
 [a 3C 65 84 43 67 83 67 83 61 34 71 83 77 34 13 10 0 ]
 [a 4C 65 84 43 67 77 71 83 61 34 50 57 51 54 34 13 10 0 ]
 [a 6C 65 84 43 67 77 71 83 61 34 50 57 51 54 34 13 10 0 ]
 [a 8C 65 84 43 67 77 71 83 61 34 50 57 51 54 34 13 10 0 ]
-[a 10C 65 84 43 67 77 71 83 61 34 50 57 51 54 34 13 10 0 ]
