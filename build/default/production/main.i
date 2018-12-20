@@ -10948,9 +10948,9 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 146 "./mcc_generated_files/pin_manager.h"
+# 186 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 158 "./mcc_generated_files/pin_manager.h"
+# 198 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -11031,18 +11031,8 @@ typedef uint32_t uint_fast32_t;
 # 53 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/ext_int.h" 1
-# 250 "./mcc_generated_files/ext_int.h"
+# 94 "./mcc_generated_files/ext_int.h"
 void EXT_INT_Initialize(void);
-# 272 "./mcc_generated_files/ext_int.h"
-void INT_ISR(void);
-# 296 "./mcc_generated_files/ext_int.h"
-void INT_CallBack(void);
-# 319 "./mcc_generated_files/ext_int.h"
-void INT_SetInterruptHandler(void (* InterruptHandler)(void));
-# 343 "./mcc_generated_files/ext_int.h"
-extern void (*INT_InterruptHandler)(void);
-# 367 "./mcc_generated_files/ext_int.h"
-void INT_DefaultInterruptHandler(void);
 # 54 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/eusart.h" 1
@@ -11277,65 +11267,153 @@ int SendCMGF(char *response);
 int SendCSCS(char *response);
 # 75 "./sim800at.h"
 int SendTestMessage(char *response, char *message);
+
+int SendBtn1Message(char *response, char *line);
+
+int SendBtn2Message(char *response, char *line);
+
+int SendBtn3Message(char *response, char *line);
 # 47 "main.c" 2
 
 
 
 
 
+
+void CookiesTest(char *responseArray, int charsRead);
+void Button1Message(char *responseArray, int charsRead, char *line);
+void Button2Message(char *responseArray, int charsRead, char *line);
+void Button3Message(char *responseArray, int charsRead, char *line);
+
+void FlashPin() {
+    do { LATAbits.LATA4 = 1; } while(0);
+    _delay((unsigned long)((200)*(16000000/4000.0)));
+    do { LATAbits.LATA4 = 0; } while(0);
+    _delay((unsigned long)((200)*(16000000/4000.0)));
+}
+
+void WarningFlash(void);
+
 void main(void) {
-
-    SYSTEM_Initialize();
-
     char responseArray[64] = "";
+    char lineArray[64] = "";
     int charsRead = 0;
 
 
+    SYSTEM_Initialize();
 
     while (1) {
-        _delay((unsigned long)((200)*(16000000/4000.0)));
+        if (PORTCbits.RC3 == 1) {
 
-        while (EUSART_is_rx_ready())
-        {
-            charsRead = EUSART_Read_String(responseArray, 64);
-            _delay((unsigned long)((200)*(16000000/4000.0)));
+            do { LATAbits.LATA4 = 1; } while(0);
+            Button1Message(responseArray, charsRead, lineArray);
         }
 
-        do { LATCbits.LATC2 = 1; } while(0);
-        _delay((unsigned long)((200)*(16000000/4000.0)));
-        do { LATCbits.LATC2 = 0; } while(0);
-        _delay((unsigned long)((200)*(16000000/4000.0)));
-        do { LATCbits.LATC2 = 1; } while(0);
-        _delay((unsigned long)((200)*(16000000/4000.0)));
-        do { LATCbits.LATC2 = 0; } while(0);
-        _delay((unsigned long)((200)*(16000000/4000.0)));
+        if (PORTCbits.RC2 == 1) {
 
 
-        charsRead = SendAT(responseArray);
 
-        if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-            do { LATCbits.LATC2 = 1; } while(0);
-            _delay((unsigned long)((200)*(16000000/4000.0)));
-            do { LATCbits.LATC2 = 0; } while(0);
-            _delay((unsigned long)((200)*(16000000/4000.0)));
-        } else {
-            do { LATCbits.LATC0 = 1; } while(0);
+
         }
 
-        memset(responseArray, 0, sizeof responseArray);
+        if (PORTCbits.RC1 == 1) {
 
-        charsRead = SendCMGF(responseArray);
 
-        if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-            do { LATCbits.LATC2 = 1; } while(0);
-            _delay((unsigned long)((200)*(16000000/4000.0)));
-            do { LATCbits.LATC2 = 0; } while(0);
-            _delay((unsigned long)((200)*(16000000/4000.0)));
-        } else {
-            do { LATCbits.LATC0 = 1; } while(0);
+
+
+
         }
 
-        memset(responseArray, 0, sizeof responseArray);
-# 178 "main.c"
+        do { LATAbits.LATA4 = 0; } while(0);
     }
+}
+
+void WarningFlash() {
+    FlashPin();
+    FlashPin();
+    FlashPin();
+}
+
+void PreMessageSetup(char *responseArray, int charsRead) {
+    charsRead = SendAT(responseArray);
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * 64);
+
+    charsRead = SendCMGF(responseArray);
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * 64);
+
+    charsRead = SendCSCS(responseArray);
+
+    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+        _delay((unsigned long)((200)*(16000000/4000.0)));
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * 64);
+}
+
+void Button1Message(char *responseArray, int charsRead, char *line) {
+    PreMessageSetup(responseArray, charsRead);
+
+    charsRead = SendBtn1Message(responseArray, line);
+
+    if (strcmp(responseArray, "\r\n") == 0) {
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * 64);
+}
+
+void Button2Message(char *responseArray, int charsRead, char *line) {
+    PreMessageSetup(responseArray, charsRead);
+
+    charsRead = SendBtn2Message(responseArray, line);
+
+    if (strcmp(responseArray, "\r\n") == 0) {
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * 64);
+}
+
+void Button3Message(char *responseArray, int charsRead, char *line) {
+    PreMessageSetup(responseArray, charsRead);
+
+    charsRead = SendBtn3Message(responseArray, line);
+
+    if (strcmp(responseArray, "\r\n") == 0) {
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * 64);
+}
+
+void CookiesTest(char *responseArray, int charsRead) {
+    PreMessageSetup(responseArray, charsRead);
+
+    charsRead = SendTestMessage(responseArray, "COOKIES\x1A");
+
+    if (strcmp(responseArray, "\r\n") == 0) {
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * 64);
 }

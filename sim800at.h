@@ -73,3 +73,9 @@ int SendCSCS(char *response);
  *      reponse parameter modified as side-effect
  */
 int SendTestMessage(char *response, char *message);
+
+int SendBtn1Message(char *response, char *line);
+
+int SendBtn2Message(char *response, char *line);
+
+int SendBtn3Message(char *response, char *line);

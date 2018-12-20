@@ -10948,9 +10948,9 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 166 "./mcc_generated_files/pin_manager.h"
+# 186 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 178 "./mcc_generated_files/pin_manager.h"
+# 198 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -11267,6 +11267,12 @@ int SendCMGF(char *response);
 int SendCSCS(char *response);
 # 75 "./sim800at.h"
 int SendTestMessage(char *response, char *message);
+
+int SendBtn1Message(char *response, char *line);
+
+int SendBtn2Message(char *response, char *line);
+
+int SendBtn3Message(char *response, char *line);
 # 47 "main.c" 2
 
 
@@ -11274,77 +11280,140 @@ int SendTestMessage(char *response, char *message);
 
 
 
-void CookiesTest(void);
+void CookiesTest(char *responseArray, int charsRead);
+void Button1Message(char *responseArray, int charsRead, char *line);
+void Button2Message(char *responseArray, int charsRead, char *line);
+void Button3Message(char *responseArray, int charsRead, char *line);
+
+void FlashPin() {
+    do { LATAbits.LATA4 = 1; } while(0);
+    _delay((unsigned long)((200)*(16000000/4000.0)));
+    do { LATAbits.LATA4 = 0; } while(0);
+    _delay((unsigned long)((200)*(16000000/4000.0)));
+}
+
+void WarningFlash(void);
 
 void main(void) {
+    char responseArray[64] = "";
+    char lineArray[64] = "";
+    int charsRead = 0;
+
 
     SYSTEM_Initialize();
 
     while (1) {
-        if (PORTCbits.RC1 == 1) {
-            do { LATCbits.LATC2 = 1; } while(0);
-            do { LATCbits.LATC0 = 0; } while(0);
-            CookiesTest();
-        } else {
-            do { LATCbits.LATC0 = 1; } while(0);
-            do { LATCbits.LATC2 = 0; } while(0);
+        if (PORTCbits.RC3 == 1) {
+
+            do { LATAbits.LATA4 = 1; } while(0);
+            Button1Message(responseArray, charsRead, lineArray);
         }
+
+        if (PORTCbits.RC2 == 1) {
+
+
+            do { LATAbits.LATA4 = 1; } while(0);
+            Button2Message(responseArray, charsRead, lineArray);
+        }
+
+        if (PORTCbits.RC1 == 1) {
+
+
+
+            do { LATAbits.LATA4 = 1; } while(0);
+            Button3Message(responseArray, charsRead, lineArray);
+        }
+
+        do { LATAbits.LATA4 = 0; } while(0);
     }
 }
 
-void CookiesTest() {
-    char responseArray[64] = "";
-    int charsRead = 0;
+void WarningFlash() {
+    FlashPin();
+    FlashPin();
+    FlashPin();
+}
 
+void PreMessageSetup(char *responseArray, int charsRead) {
     charsRead = SendAT(responseArray);
 
     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-        do { LATCbits.LATC2 = 1; } while(0);
-        _delay((unsigned long)((200)*(16000000/4000.0)));
-        do { LATCbits.LATC2 = 0; } while(0);
         _delay((unsigned long)((200)*(16000000/4000.0)));
     } else {
-        do { LATCbits.LATC0 = 1; } while(0);
+        WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof responseArray);
+    memset(responseArray, 0, sizeof(char) * 64);
 
     charsRead = SendCMGF(responseArray);
 
     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-        do { LATCbits.LATC2 = 1; } while(0);
-        _delay((unsigned long)((200)*(16000000/4000.0)));
-        do { LATCbits.LATC2 = 0; } while(0);
         _delay((unsigned long)((200)*(16000000/4000.0)));
     } else {
-        do { LATCbits.LATC0 = 1; } while(0);
+        WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof responseArray);
+    memset(responseArray, 0, sizeof(char) * 64);
 
     charsRead = SendCSCS(responseArray);
 
     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-        do { LATCbits.LATC2 = 1; } while(0);
-        _delay((unsigned long)((200)*(16000000/4000.0)));
-        do { LATCbits.LATC2 = 0; } while(0);
         _delay((unsigned long)((200)*(16000000/4000.0)));
     } else {
-        do { LATCbits.LATC0 = 1; } while(0);
+        WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof responseArray);
+    memset(responseArray, 0, sizeof(char) * 64);
+}
 
-    charsRead = SendTestMessage(responseArray, "TEST");
+void Button1Message(char *responseArray, int charsRead, char *line) {
+    PreMessageSetup(responseArray, charsRead);
 
-    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-        do { LATCbits.LATC2 = 1; } while(0);
-        _delay((unsigned long)((200)*(16000000/4000.0)));
-        do { LATCbits.LATC2 = 0; } while(0);
-        _delay((unsigned long)((200)*(16000000/4000.0)));
+    charsRead = SendBtn1Message(responseArray, line);
+
+    if (strcmp(responseArray, "\r\n") == 0) {
     } else {
-        do { LATCbits.LATC0 = 1; } while(0);
+        WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof responseArray);
+    memset(responseArray, 0, sizeof(char) * 64);
+}
+
+void Button2Message(char *responseArray, int charsRead, char *line) {
+    PreMessageSetup(responseArray, charsRead);
+
+    charsRead = SendBtn2Message(responseArray, line);
+
+    if (strcmp(responseArray, "\r\n") == 0) {
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * 64);
+}
+
+void Button3Message(char *responseArray, int charsRead, char *line) {
+    PreMessageSetup(responseArray, charsRead);
+
+    charsRead = SendBtn3Message(responseArray, line);
+
+    if (strcmp(responseArray, "\r\n") == 0) {
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * 64);
+}
+
+void CookiesTest(char *responseArray, int charsRead) {
+    PreMessageSetup(responseArray, charsRead);
+
+    charsRead = SendTestMessage(responseArray, "COOKIES\x1A");
+
+    if (strcmp(responseArray, "\r\n") == 0) {
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * 64);
 }

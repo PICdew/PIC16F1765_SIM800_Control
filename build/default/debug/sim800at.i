@@ -11016,6 +11016,12 @@ int SendCMGF(char *response);
 int SendCSCS(char *response);
 # 75 "./sim800at.h"
 int SendTestMessage(char *response, char *message);
+
+int SendBtn1Message(char *response, char *line);
+
+int SendBtn2Message(char *response, char *line);
+
+int SendBtn3Message(char *response, char *line);
 # 10 "sim800at.c" 2
 
 # 1 "./mcc_generated_files/mcc.h" 1
@@ -11024,9 +11030,9 @@ int SendTestMessage(char *response, char *message);
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 166 "./mcc_generated_files/pin_manager.h"
+# 186 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 178 "./mcc_generated_files/pin_manager.h"
+# 198 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -11188,11 +11194,10 @@ int SendCSCS(char *response)
     return totalRead;
 }
 # 114 "sim800at.c"
-int SendTestMessage(char *response, char *message)
+int SendTestMessage(char *response, char *line)
 {
     int totalRead = 0;
     int charsRead = 0;
-    char line[64] = "";
 
     EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
     _delay((unsigned long)((500)*(16000000/4000.0)));
@@ -11200,6 +11205,69 @@ int SendTestMessage(char *response, char *message)
     strncpy(response, line, charsRead);
     totalRead += charsRead;
     EUSART_Write_String("COOKIES\x1A");
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+
+    return totalRead;
+}
+
+int SendBtn1Message(char *response, char *line)
+{
+    int totalRead = 0;
+    int charsRead = 0;
+
+    EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
+    _delay((unsigned long)((500)*(16000000/4000.0)));
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+    EUSART_Write_String("BTN_1\x1A");
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+
+    return totalRead;
+}
+
+int SendBtn2Message(char *response, char *line)
+{
+    int totalRead = 0;
+    int charsRead = 0;
+
+    EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
+    _delay((unsigned long)((500)*(16000000/4000.0)));
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+    EUSART_Write_String("BTN_2\x1A");
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+
+    return totalRead;
+}
+
+int SendBtn3Message(char *response, char *line)
+{
+    int totalRead = 0;
+    int charsRead = 0;
+
+    EUSART_Write_String("AT+CMGS=\"2936\"\r\n");
+    _delay((unsigned long)((500)*(16000000/4000.0)));
+    charsRead = EUSART_Read_String(line, 64);
+    strncpy(response, line, charsRead);
+    totalRead += charsRead;
+    EUSART_Write_String("BTN_3\x1A");
     charsRead = EUSART_Read_String(line, 64);
     strncpy(response, line, charsRead);
     totalRead += charsRead;

@@ -17,12 +17,18 @@
 [v _strncpy strncpy `(*.4uc  1 e 1 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"52 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
+"58 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
+[v _FlashPin FlashPin `(v  1 e 1 0 ]
+"67
 [v _main main `(v  1 e 1 0 ]
+"101
+[v _WarningFlash WarningFlash `(v  1 e 1 0 ]
+"107
+[v _PreMessageSetup PreMessageSetup `(v  1 e 1 0 ]
+"139
+[v _Button1Message Button1Message `(v  1 e 1 0 ]
 "55 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
-"80
-[v _EUSART_is_rx_ready EUSART_is_rx_ready `(a  1 e 1 0 ]
 "88
 [v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
 "103
@@ -31,13 +37,7 @@
 [v _EUSART_Write_String EUSART_Write_String `(v  1 e 1 0 ]
 "119
 [v _EUSART_Read_String EUSART_Read_String `(i  1 e 2 0 ]
-"41 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/ext_int.c
-[v _INT_CallBack INT_CallBack `(v  1 e 1 0 ]
-"50
-[v _INT_SetInterruptHandler INT_SetInterruptHandler `(v  1 e 1 0 ]
-"54
-[v _INT_DefaultInterruptHandler INT_DefaultInterruptHandler `(v  1 e 1 0 ]
-"59
+"32 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/ext_int.c
 [v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
 "50 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -51,23 +51,28 @@
 [v _SendAT SendAT `(i  1 e 2 0 ]
 "54
 [v _SendCMGF SendCMGF `(i  1 e 2 0 ]
-[s S223 . 1 `uc 1 IOCIF 1 0 :1:0 
-`uc 1 INTF 1 0 :1:1 
-`uc 1 TMR0IF 1 0 :1:2 
-`uc 1 IOCIE 1 0 :1:3 
-`uc 1 INTE 1 0 :1:4 
-`uc 1 TMR0IE 1 0 :1:5 
-`uc 1 PEIE 1 0 :1:6 
-`uc 1 GIE 1 0 :1:7 
+"83
+[v _SendCSCS SendCSCS `(i  1 e 2 0 ]
+"114
+[v _SendTestMessage SendTestMessage `(i  1 e 2 0 ]
+"135
+[v _SendBtn1Message SendBtn1Message `(i  1 e 2 0 ]
+"156
+[v _SendBtn2Message SendBtn2Message `(i  1 e 2 0 ]
+"177
+[v _SendBtn3Message SendBtn3Message `(i  1 e 2 0 ]
+[s S247 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
 ]
-"374 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h
-[s S232 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 T0IF 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 T0IE 1 0 :1:5 
+"497 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h
+[s S254 . 1 `uc 1 RC 1 0 :6:0 
 ]
-[u S237 . 1 `S223 1 . 1 0 `S232 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES237  1 e 1 @11 ]
+[u S256 . 1 `S247 1 . 1 0 `S254 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES256  1 e 1 @14 ]
 [s S27 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
@@ -114,18 +119,18 @@
 [v _OSCSTAT OSCSTAT `VEuc  1 e 1 @154 ]
 "2577
 [v _LATA LATA `VEuc  1 e 1 @268 ]
+[s S223 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 LATA4 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+]
+"2592
+[u S230 . 1 `S223 1 . 1 0 ]
+[v _LATAbits LATAbits `VES230  1 e 1 @268 ]
 "2622
 [v _LATC LATC `VEuc  1 e 1 @270 ]
-[s S310 . 1 `uc 1 LATC0 1 0 :1:0 
-`uc 1 LATC1 1 0 :1:1 
-`uc 1 LATC2 1 0 :1:2 
-`uc 1 LATC3 1 0 :1:3 
-`uc 1 LATC4 1 0 :1:4 
-`uc 1 LATC5 1 0 :1:5 
-]
-"2637
-[u S317 . 1 `S310 1 . 1 0 ]
-[v _LATCbits LATCbits `VES317  1 e 1 @270 ]
 "3268
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
 "3307
@@ -186,18 +191,84 @@
 [v _RXPPS RXPPS `VEuc  1 e 1 @3620 ]
 "15829
 [v _RC4PPS RC4PPS `VEuc  1 e 1 @3748 ]
-"30 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/ext_int.c
-[v _INT_InterruptHandler INT_InterruptHandler `*.37(v  1 e 2 0 ]
-"52 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
+"67 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"56
-[v main@responseArray responseArray `[64]uc  1 a 64 0 ]
-"57
-[v main@charsRead charsRead `i  1 a 2 64 ]
-"54
-[v main@F7061 F7061 `[64]uc  1 s 64 F7061 ]
-"179
+"68
+[v main@responseArray responseArray `[64]uc  1 a 64 3 ]
+"69
+[v main@lineArray lineArray `[64]uc  1 a 64 0 ]
+"70
+[v main@charsRead charsRead `i  1 a 2 67 ]
+"67
+[v main@F7078 F7078 `[64]uc  1 s 64 F7078 ]
+"68
+[v main@F7080 F7080 `[64]uc  1 s 64 F7080 ]
+"99
+} 0
+"50 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"58
+} 0
+"72
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+{
+"76
+} 0
+"57 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"107
+} 0
+"60 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"70
+} 0
+"32 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/ext_int.c
+[v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
+{
+"34
+} 0
+"55 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/eusart.c
+[v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
+{
+"74
+} 0
+"139 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
+[v _Button1Message Button1Message `(v  1 e 1 0 ]
+{
+[v Button1Message@responseArray responseArray `*.4uc  1 a 1 wreg ]
+[v Button1Message@responseArray responseArray `*.4uc  1 a 1 wreg ]
+[v Button1Message@charsRead charsRead `i  1 p 2 77 ]
+[v Button1Message@line line `*.5uc  1 p 1 79 ]
+[v Button1Message@responseArray responseArray `*.4uc  1 a 1 1 ]
+"150
+} 0
+"135 C:\Repos\zing\PIC16F1765_SIM800_Control\sim800at.c
+[v _SendBtn1Message SendBtn1Message `(i  1 e 2 0 ]
+{
+[v SendBtn1Message@response response `*.4uc  1 a 1 wreg ]
+"138
+[v SendBtn1Message@charsRead charsRead `i  1 a 2 5 ]
+"137
+[v SendBtn1Message@totalRead totalRead `i  1 a 2 2 ]
+"135
+[v SendBtn1Message@response response `*.4uc  1 a 1 wreg ]
+[v SendBtn1Message@line line `*.5uc  1 p 1 12 ]
+"137
+[v SendBtn1Message@response response `*.4uc  1 a 1 4 ]
+"154
+} 0
+"107 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
+[v _PreMessageSetup PreMessageSetup `(v  1 e 1 0 ]
+{
+[v PreMessageSetup@responseArray responseArray `*.4uc  1 a 1 wreg ]
+[v PreMessageSetup@responseArray responseArray `*.4uc  1 a 1 wreg ]
+[v PreMessageSetup@charsRead charsRead `i  1 p 2 72 ]
+[v PreMessageSetup@responseArray responseArray `*.4uc  1 a 1 76 ]
+"137
 } 0
 "3 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcmp.c
 [v _strcmp strcmp `(i  1 e 2 0 ]
@@ -224,7 +295,35 @@
 [v memset@dest dest `*.4v  1 a 1 8 ]
 "90
 } 0
-"54 C:\Repos\zing\PIC16F1765_SIM800_Control\sim800at.c
+"101 C:\Repos\zing\PIC16F1765_SIM800_Control\main.c
+[v _WarningFlash WarningFlash `(v  1 e 1 0 ]
+{
+"105
+} 0
+"58
+[v _FlashPin FlashPin `(v  1 e 1 0 ]
+{
+"63
+} 0
+"83 C:\Repos\zing\PIC16F1765_SIM800_Control\sim800at.c
+[v _SendCSCS SendCSCS `(i  1 e 2 0 ]
+{
+[v SendCSCS@response response `*.4uc  1 a 1 wreg ]
+"87
+[v SendCSCS@line line `[64]uc  1 a 64 3 ]
+"86
+[v SendCSCS@charsRead charsRead `i  1 a 2 70 ]
+"85
+[v SendCSCS@totalRead totalRead `i  1 a 2 67 ]
+"83
+[v SendCSCS@response response `*.4uc  1 a 1 wreg ]
+"86
+[v SendCSCS@F6758 F6758 `[64]uc  1 s 64 F6758 ]
+"85
+[v SendCSCS@response response `*.4uc  1 a 1 69 ]
+"98
+} 0
+"54
 [v _SendCMGF SendCMGF `(i  1 e 2 0 ]
 {
 [v SendCMGF@response response `*.4uc  1 a 1 wreg ]
@@ -265,13 +364,13 @@
 {
 [v strncpy@d d `*.4uc  1 a 1 wreg ]
 "10
-[v strncpy@cp cp `*.4uc  1 a 1 5 ]
+[v strncpy@cp cp `*.4uc  1 a 1 6 ]
 "7
 [v strncpy@d d `*.4uc  1 a 1 wreg ]
-[v strncpy@s s `*.4DCuc  1 p 1 0 ]
-[v strncpy@n n `ui  1 p 2 1 ]
+[v strncpy@s s `*.26DCuc  1 p 2 0 ]
+[v strncpy@n n `ui  1 p 2 2 ]
 "11
-[v strncpy@d d `*.4uc  1 a 1 4 ]
+[v strncpy@d d `*.4uc  1 a 1 7 ]
 "23
 } 0
 "3 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strncat.c
@@ -317,65 +416,21 @@
 "119
 [v _EUSART_Read_String EUSART_Read_String `(i  1 e 2 0 ]
 {
-[v EUSART_Read_String@s s `*.4uc  1 a 1 wreg ]
 "127
-[v EUSART_Read_String@c c `uc  1 a 1 10 ]
+[v EUSART_Read_String@c c `uc  1 a 1 11 ]
 "121
-[v EUSART_Read_String@i i `i  1 a 2 7 ]
+[v EUSART_Read_String@i i `i  1 a 2 9 ]
 "123
-[v EUSART_Read_String@seenNL seenNL `ui  1 a 2 5 ]
+[v EUSART_Read_String@seenNL seenNL `ui  1 a 2 7 ]
 "122
-[v EUSART_Read_String@seenCR seenCR `ui  1 a 2 3 ]
+[v EUSART_Read_String@seenCR seenCR `ui  1 a 2 5 ]
 "119
-[v EUSART_Read_String@s s `*.4uc  1 a 1 wreg ]
-[v EUSART_Read_String@max_length max_length `ui  1 p 2 0 ]
-"121
-[v EUSART_Read_String@s s `*.4uc  1 a 1 9 ]
+[v EUSART_Read_String@s s `*.26uc  1 p 2 0 ]
+[v EUSART_Read_String@max_length max_length `ui  1 p 2 2 ]
 "147
 } 0
 "88
 [v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
 {
 "101
-} 0
-"50 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/mcc.c
-[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
-{
-"58
-} 0
-"72
-[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
-{
-"76
-} 0
-"57 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/pin_manager.c
-[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-{
-"107
-} 0
-"60 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/mcc.c
-[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
-{
-"70
-} 0
-"59 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/ext_int.c
-[v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
-{
-"69
-} 0
-"50
-[v _INT_SetInterruptHandler INT_SetInterruptHandler `(v  1 e 1 0 ]
-{
-[v INT_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
-"52
-} 0
-"55 C:\Repos\zing\PIC16F1765_SIM800_Control\mcc_generated_files/eusart.c
-[v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
-{
-"74
-} 0
-"80
-[v _EUSART_is_rx_ready EUSART_is_rx_ready `(a  1 e 1 0 ]
-{
-"82
 } 0

@@ -111,11 +111,10 @@ int SendCSCS(char *response)
  *      Number of characters collected into response buffer.
  *      reponse parameter modified as side-effect
  */
-int SendTestMessage(char *response, char *message)
+int SendTestMessage(char *response, char *line)
 {
     int totalRead = 0;
     int charsRead = 0;
-    char line[MAX_SIZE] = "";
     
     EUSART_Write_String("AT+CMGS=\"2936\"\r\n");    
     __delay_ms(500);
@@ -123,6 +122,69 @@ int SendTestMessage(char *response, char *message)
     strncpy(response, line, charsRead);                  
     totalRead += charsRead;
     EUSART_Write_String("COOKIES\x1A");
+    charsRead = EUSART_Read_String(line, MAX_SIZE);     
+    strncpy(response, line, charsRead);                  
+    totalRead += charsRead;
+    charsRead = EUSART_Read_String(line, MAX_SIZE);     
+    strncpy(response, line, charsRead);                  
+    totalRead += charsRead;
+    
+    return totalRead;
+}
+
+int SendBtn1Message(char *response, char *line)
+{
+    int totalRead = 0;
+    int charsRead = 0;
+    
+    EUSART_Write_String("AT+CMGS=\"2936\"\r\n");    
+    __delay_ms(500);
+    charsRead = EUSART_Read_String(line, MAX_SIZE);     
+    strncpy(response, line, charsRead);                  
+    totalRead += charsRead;
+    EUSART_Write_String("BTN_1\x1A");
+    charsRead = EUSART_Read_String(line, MAX_SIZE);     
+    strncpy(response, line, charsRead);                  
+    totalRead += charsRead;
+    charsRead = EUSART_Read_String(line, MAX_SIZE);     
+    strncpy(response, line, charsRead);                  
+    totalRead += charsRead;
+    
+    return totalRead;
+}
+
+int SendBtn2Message(char *response, char *line)
+{
+    int totalRead = 0;
+    int charsRead = 0;
+    
+    EUSART_Write_String("AT+CMGS=\"2936\"\r\n");    
+    __delay_ms(500);
+    charsRead = EUSART_Read_String(line, MAX_SIZE);     
+    strncpy(response, line, charsRead);                  
+    totalRead += charsRead;
+    EUSART_Write_String("BTN_2\x1A");
+    charsRead = EUSART_Read_String(line, MAX_SIZE);     
+    strncpy(response, line, charsRead);                  
+    totalRead += charsRead;
+    charsRead = EUSART_Read_String(line, MAX_SIZE);     
+    strncpy(response, line, charsRead);                  
+    totalRead += charsRead;
+    
+    return totalRead;
+}
+
+int SendBtn3Message(char *response, char *line)
+{
+    int totalRead = 0;
+    int charsRead = 0;
+    
+    EUSART_Write_String("AT+CMGS=\"2936\"\r\n");    
+    __delay_ms(500);
+    charsRead = EUSART_Read_String(line, MAX_SIZE);     
+    strncpy(response, line, charsRead);                  
+    totalRead += charsRead;
+    EUSART_Write_String("BTN_3\x1A");
     charsRead = EUSART_Read_String(line, MAX_SIZE);     
     strncpy(response, line, charsRead);                  
     totalRead += charsRead;

@@ -50,79 +50,142 @@
                          Main application
  */
 
-void CookiesTest(void);
+void CookiesTest(char *responseArray, int charsRead);
+void Button1Message(char *responseArray, int charsRead, char *line);
+void Button2Message(char *responseArray, int charsRead, char *line);
+void Button3Message(char *responseArray, int charsRead, char *line);
+
+void FlashPin() {
+    ACTIVE_PIN_SetHigh();
+    __delay_ms(200);
+    ACTIVE_PIN_SetLow();
+    __delay_ms(200);
+}
+
+void WarningFlash(void);
 
 void main(void) {
+    char responseArray[MAX_SIZE] = "";
+    char lineArray[MAX_SIZE] = "";
+    int charsRead = 0;
+    
     // initialize the device
     SYSTEM_Initialize();
 
     while (1) {
         if (BTN1_PIN_GetValue() == 1) {
-            LED_PIN_SetHigh();
-            ERROR_PIN_SetLow();
-            CookiesTest();
-        } else {
-            ERROR_PIN_SetHigh();
-            LED_PIN_SetLow();
+            //WarningFlash();
+            ACTIVE_PIN_SetHigh();
+            Button1Message(responseArray, charsRead, lineArray);
         }
+        
+        if (BTN2_PIN_GetValue() == 1) {
+            //WarningFlash();
+            //WarningFlash();
+            ACTIVE_PIN_SetHigh();
+            Button2Message(responseArray, charsRead, lineArray);
+        }
+        
+        if (BTN3_PIN_GetValue() == 1) {
+            //WarningFlash();
+            //WarningFlash();
+            //WarningFlash();
+            ACTIVE_PIN_SetHigh();
+            Button3Message(responseArray, charsRead, lineArray);
+        }
+        
+        ACTIVE_PIN_SetLow();
     }
 }
 
-void CookiesTest() {
-    char responseArray[MAX_SIZE] = "";
-    int charsRead = 0;
+void WarningFlash() {
+    FlashPin();
+    FlashPin();
+    FlashPin();
+}
 
+void PreMessageSetup(char *responseArray, int charsRead) {
     charsRead = SendAT(responseArray);
 
     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-        LED_PIN_SetHigh();
-        __delay_ms(200);
-        LED_PIN_SetLow();
         __delay_ms(200);
     } else {
-        ERROR_PIN_SetHigh();
+        WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof responseArray);
+    memset(responseArray, 0, sizeof(char) * MAX_SIZE);
 
     charsRead = SendCMGF(responseArray);
 
     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-        LED_PIN_SetHigh();
-        __delay_ms(200);
-        LED_PIN_SetLow();
         __delay_ms(200);
     } else {
-        ERROR_PIN_SetHigh();
+        WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof responseArray);
+    memset(responseArray, 0, sizeof(char) * MAX_SIZE);
 
     charsRead = SendCSCS(responseArray);
 
     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-        LED_PIN_SetHigh();
-        __delay_ms(200);
-        LED_PIN_SetLow();
         __delay_ms(200);
     } else {
-        ERROR_PIN_SetHigh();
+        WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof responseArray);
+    memset(responseArray, 0, sizeof(char) * MAX_SIZE);
+}
 
-    charsRead = SendTestMessage(responseArray, "TEST");
+void Button1Message(char *responseArray, int charsRead, char *line) {
+    PreMessageSetup(responseArray, charsRead);
 
-    if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-        LED_PIN_SetHigh();
-        __delay_ms(200);
-        LED_PIN_SetLow();
-        __delay_ms(200);
+    charsRead = SendBtn1Message(responseArray, line);
+
+    if (strcmp(responseArray, "\r\n") == 0) {
     } else {
-        ERROR_PIN_SetHigh();
+        WarningFlash();
     }
 
-    memset(responseArray, 0, sizeof responseArray);
+    memset(responseArray, 0, sizeof(char) * MAX_SIZE);
+}
+
+void Button2Message(char *responseArray, int charsRead, char *line) {    
+    PreMessageSetup(responseArray, charsRead);
+
+    charsRead = SendBtn2Message(responseArray, line);
+
+    if (strcmp(responseArray, "\r\n") == 0) {
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * MAX_SIZE);
+}
+
+void Button3Message(char *responseArray, int charsRead, char *line) {
+    PreMessageSetup(responseArray, charsRead);
+
+    charsRead = SendBtn3Message(responseArray, line);
+
+    if (strcmp(responseArray, "\r\n") == 0) {
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * MAX_SIZE);
+}
+
+void CookiesTest(char *responseArray, int charsRead) {
+    PreMessageSetup(responseArray, charsRead);
+
+    charsRead = SendTestMessage(responseArray, "COOKIES\x1A");
+
+    if (strcmp(responseArray, "\r\n") == 0) {
+    } else {
+        WarningFlash();
+    }
+
+    memset(responseArray, 0, sizeof(char) * MAX_SIZE);
 }
 
 /**

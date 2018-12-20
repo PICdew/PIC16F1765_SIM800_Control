@@ -1,4 +1,19 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"2583 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 2583:     struct {
+[s S139 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S139 . LATA0 LATA1 LATA2 . LATA4 LATA5 ]
+"2582
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 2582: typedef union {
+[u S138 `S139 1 ]
+[n S138 . . ]
+"2592
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 2592: extern volatile LATAbits_t LATAbits __attribute__((address(0x10C)));
+[v _LATAbits `VS138 ~T0 @X0 0 e@268 ]
+[v F6504 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic.h
+[v __delay `JF6504 ~T0 @X0 0 e ]
+[p i __delay ]
 [p mainexit ]
 "70 ./mcc_generated_files/mcc.h
 [; ;./mcc_generated_files/mcc.h: 70: void SYSTEM_Initialize(void);
@@ -18,31 +33,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 "497
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 497: extern volatile PORTCbits_t PORTCbits __attribute__((address(0x00E)));
 [v _PORTCbits `VS35 ~T0 @X0 0 e@14 ]
-"2628
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 2628:     struct {
-[s S141 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S141 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
-"2627
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 2627: typedef union {
-[u S140 `S141 1 ]
-[n S140 . . ]
-"2637
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 2637: extern volatile LATCbits_t LATCbits __attribute__((address(0x10E)));
-[v _LATCbits `VS140 ~T0 @X0 0 e@270 ]
-"53 main.c
-[; ;main.c: 53: void CookiesTest(void);
-[v _CookiesTest `(v ~T0 @X0 0 ef ]
+"54 main.c
+[; ;main.c: 54: void Button1Message(char *responseArray, int charsRead, char *line);
+[v _Button1Message `(v ~T0 @X0 0 ef3`*uc`i`*uc ]
+"55
+[; ;main.c: 55: void Button2Message(char *responseArray, int charsRead, char *line);
+[v _Button2Message `(v ~T0 @X0 0 ef3`*uc`i`*uc ]
+"56
+[; ;main.c: 56: void Button3Message(char *responseArray, int charsRead, char *line);
+[v _Button3Message `(v ~T0 @X0 0 ef3`*uc`i`*uc ]
 "15 ./sim800at.h
 [; ;./sim800at.h: 15: int SendAT(char *response);
 [v _SendAT `(i ~T0 @X0 0 ef1`*uc ]
 "39 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 39: int strcmp (const char *, const char *);
 [v _strcmp `(i ~T0 @X0 0 ef2`*Cuc`*Cuc ]
-[v F6504 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic.h
-[v __delay `JF6504 ~T0 @X0 0 e ]
-[p i __delay ]
-"29 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h
+"29
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 29: void *memset (void *, int, size_t);
 [v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
 "45 ./sim800at.h
@@ -51,6 +57,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59
 [; ;./sim800at.h: 59: int SendCSCS(char *response);
 [v _SendCSCS `(i ~T0 @X0 0 ef1`*uc ]
+"77
+[; ;./sim800at.h: 77: int SendBtn1Message(char *response, char *line);
+[v _SendBtn1Message `(i ~T0 @X0 0 ef2`*uc`*uc ]
+"79
+[; ;./sim800at.h: 79: int SendBtn2Message(char *response, char *line);
+[v _SendBtn2Message `(i ~T0 @X0 0 ef2`*uc`*uc ]
+"81
+[; ;./sim800at.h: 81: int SendBtn3Message(char *response, char *line);
+[v _SendBtn3Message `(i ~T0 @X0 0 ef2`*uc`*uc ]
 "75
 [; ;./sim800at.h: 75: int SendTestMessage(char *response, char *message);
 [v _SendTestMessage `(i ~T0 @X0 0 ef2`*uc`*uc ]
@@ -1026,289 +1041,414 @@ Version 4.0 HI-TECH Software Intermediate Code
 "19151
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1765.h: 19151: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
+"58 main.c
+[; ;main.c: 58: void FlashPin() {
+[v _FlashPin `(v ~T0 @X0 1 ef ]
+{
+[e :U _FlashPin ]
+[f ]
+"59
+[; ;main.c: 59:     do { LATAbits.LATA4 = 1; } while(0);
+[e :U 947 ]
+{
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+}
+[e :U 946 ]
+"60
+[; ;main.c: 60:     _delay((unsigned long)((200)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"61
+[; ;main.c: 61:     do { LATAbits.LATA4 = 0; } while(0);
+[e :U 950 ]
+{
+[e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
+}
+[e :U 949 ]
+"62
+[; ;main.c: 62:     _delay((unsigned long)((200)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"63
+[; ;main.c: 63: }
+[e :UE 944 ]
+}
 [v $root$_main `(v ~T0 @X0 0 e ]
-"55 main.c
-[; ;main.c: 55: void main(void) {
+"67
+[; ;main.c: 67: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"57
-[; ;main.c: 57:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"59
-[; ;main.c: 59:     while (1) {
-[e :U 946 ]
-{
-"60
-[; ;main.c: 60:         if (PORTCbits.RC1 == 1) {
-[e $ ! == -> . . _PORTCbits 0 1 `i -> 1 `i 948  ]
-{
-"61
-[; ;main.c: 61:             do { LATCbits.LATC2 = 1; } while(0);
-[e :U 951 ]
-{
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-}
-[e :U 950 ]
-"62
-[; ;main.c: 62:             do { LATCbits.LATC0 = 0; } while(0);
-[e :U 954 ]
-{
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-}
-[e :U 953 ]
-"63
-[; ;main.c: 63:             CookiesTest();
-[e ( _CookiesTest ..  ]
-"64
-[; ;main.c: 64:         } else {
-}
-[e $U 955  ]
-[e :U 948 ]
-{
-"65
-[; ;main.c: 65:             do { LATCbits.LATC0 = 1; } while(0);
-[e :U 958 ]
-{
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-}
-[e :U 957 ]
-"66
-[; ;main.c: 66:             do { LATCbits.LATC2 = 0; } while(0);
-[e :U 961 ]
-{
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-}
-[e :U 960 ]
-"67
-[; ;main.c: 67:         }
-}
-[e :U 955 ]
-"68
-[; ;main.c: 68:     }
-}
-[e :U 945 ]
-[e $U 946  ]
-[e :U 947 ]
-"69
-[; ;main.c: 69: }
-[e :UE 944 ]
-}
-"71
-[; ;main.c: 71: void CookiesTest() {
-[v _CookiesTest `(v ~T0 @X0 1 ef ]
-{
-[e :U _CookiesTest ]
-[f ]
-[v F7054 `uc ~T0 @X0 -> 64 `i s ]
-[i F7054
+[v F7078 `uc ~T0 @X0 -> 64 `i s ]
+[i F7078
 :U ..
-"72
-[; ;main.c: 72:     char responseArray[64] = "";
+"68
+[; ;main.c: 68:     char responseArray[64] = "";
 -> 0 `c
 ..
 ]
 [v _responseArray `uc ~T0 @X0 -> 64 `i a ]
-[e = _responseArray F7054 ]
-"73
-[; ;main.c: 73:     int charsRead = 0;
+[e = _responseArray F7078 ]
+[v F7080 `uc ~T0 @X0 -> 64 `i s ]
+[i F7080
+:U ..
+"69
+[; ;main.c: 69:     char lineArray[64] = "";
+-> 0 `c
+..
+]
+[v _lineArray `uc ~T0 @X0 -> 64 `i a ]
+[e = _lineArray F7080 ]
+"70
+[; ;main.c: 70:     int charsRead = 0;
 [v _charsRead `i ~T0 @X0 1 a ]
 [e = _charsRead -> 0 `i ]
+"73
+[; ;main.c: 73:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
 "75
-[; ;main.c: 75:     charsRead = SendAT(responseArray);
-[e = _charsRead ( _SendAT (1 &U _responseArray ]
-"77
-[; ;main.c: 77:     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-[e $ ! == ( _strcmp (2 , -> &U _responseArray `*Cuc :s 1C -> 0 `i 963  ]
+[; ;main.c: 75:     while (1) {
+[e :U 953 ]
+{
+"76
+[; ;main.c: 76:         if (PORTCbits.RC3 == 1) {
+[e $ ! == -> . . _PORTCbits 0 3 `i -> 1 `i 955  ]
 {
 "78
-[; ;main.c: 78:         do { LATCbits.LATC2 = 1; } while(0);
+[; ;main.c: 78:             do { LATAbits.LATA4 = 1; } while(0);
+[e :U 958 ]
+{
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+}
+[e :U 957 ]
+"79
+[; ;main.c: 79:             Button1Message(responseArray, charsRead, lineArray);
+[e ( _Button1Message (3 , , &U _responseArray _charsRead &U _lineArray ]
+"80
+[; ;main.c: 80:         }
+}
+[e :U 955 ]
+"82
+[; ;main.c: 82:         if (PORTCbits.RC2 == 1) {
+[e $ ! == -> . . _PORTCbits 0 2 `i -> 1 `i 959  ]
+{
+"85
+[; ;main.c: 85:             do { LATAbits.LATA4 = 1; } while(0);
+[e :U 962 ]
+{
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+}
+[e :U 961 ]
+"86
+[; ;main.c: 86:             Button2Message(responseArray, charsRead, lineArray);
+[e ( _Button2Message (3 , , &U _responseArray _charsRead &U _lineArray ]
+"87
+[; ;main.c: 87:         }
+}
+[e :U 959 ]
+"89
+[; ;main.c: 89:         if (PORTCbits.RC1 == 1) {
+[e $ ! == -> . . _PORTCbits 0 1 `i -> 1 `i 963  ]
+{
+"93
+[; ;main.c: 93:             do { LATAbits.LATA4 = 1; } while(0);
 [e :U 966 ]
 {
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
 }
 [e :U 965 ]
-"79
-[; ;main.c: 79:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"80
-[; ;main.c: 80:         do { LATCbits.LATC2 = 0; } while(0);
+"94
+[; ;main.c: 94:             Button3Message(responseArray, charsRead, lineArray);
+[e ( _Button3Message (3 , , &U _responseArray _charsRead &U _lineArray ]
+"95
+[; ;main.c: 95:         }
+}
+[e :U 963 ]
+"97
+[; ;main.c: 97:         do { LATAbits.LATA4 = 0; } while(0);
 [e :U 969 ]
 {
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
 }
 [e :U 968 ]
-"81
-[; ;main.c: 81:         _delay((unsigned long)((200)*(16000000/4000.0)));
+"98
+[; ;main.c: 98:     }
+}
+[e :U 952 ]
+[e $U 953  ]
+[e :U 954 ]
+"99
+[; ;main.c: 99: }
+[e :UE 951 ]
+}
+"101
+[; ;main.c: 101: void WarningFlash() {
+[v _WarningFlash `(v ~T0 @X0 1 ef ]
+{
+[e :U _WarningFlash ]
+[f ]
+"102
+[; ;main.c: 102:     FlashPin();
+[e ( _FlashPin ..  ]
+"103
+[; ;main.c: 103:     FlashPin();
+[e ( _FlashPin ..  ]
+"104
+[; ;main.c: 104:     FlashPin();
+[e ( _FlashPin ..  ]
+"105
+[; ;main.c: 105: }
+[e :UE 970 ]
+}
+"107
+[; ;main.c: 107: void PreMessageSetup(char *responseArray, int charsRead) {
+[v _PreMessageSetup `(v ~T0 @X0 1 ef2`*uc`i ]
+{
+[e :U _PreMessageSetup ]
+[v _responseArray `*uc ~T0 @X0 1 r1 ]
+[v _charsRead `i ~T0 @X0 1 r2 ]
+[f ]
+"108
+[; ;main.c: 108:     charsRead = SendAT(responseArray);
+[e = _charsRead ( _SendAT (1 _responseArray ]
+"110
+[; ;main.c: 110:     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+[e $ ! == ( _strcmp (2 , -> _responseArray `*Cuc :s 1C -> 0 `i 972  ]
+{
+"111
+[; ;main.c: 111:         _delay((unsigned long)((200)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"82
-[; ;main.c: 82:     } else {
+"112
+[; ;main.c: 112:     } else {
 }
-[e $U 970  ]
-[e :U 963 ]
-{
-"83
-[; ;main.c: 83:         do { LATCbits.LATC0 = 1; } while(0);
-[e :U 973 ]
-{
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-}
+[e $U 973  ]
 [e :U 972 ]
-"84
-[; ;main.c: 84:     }
-}
-[e :U 970 ]
-"86
-[; ;main.c: 86:     memset(responseArray, 0, sizeof responseArray);
-[e ( _memset (3 , , -> &U _responseArray `*v -> 0 `i -> # _responseArray `ui ]
-"88
-[; ;main.c: 88:     charsRead = SendCMGF(responseArray);
-[e = _charsRead ( _SendCMGF (1 &U _responseArray ]
-"90
-[; ;main.c: 90:     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-[e $ ! == ( _strcmp (2 , -> &U _responseArray `*Cuc :s 2C -> 0 `i 974  ]
 {
-"91
-[; ;main.c: 91:         do { LATCbits.LATC2 = 1; } while(0);
-[e :U 977 ]
-{
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+"113
+[; ;main.c: 113:         WarningFlash();
+[e ( _WarningFlash ..  ]
+"114
+[; ;main.c: 114:     }
 }
-[e :U 976 ]
-"92
-[; ;main.c: 92:         _delay((unsigned long)((200)*(16000000/4000.0)));
+[e :U 973 ]
+"116
+[; ;main.c: 116:     memset(responseArray, 0, sizeof(char) * 64);
+[e ( _memset (3 , , -> _responseArray `*v -> 0 `i * -> # `uc `ui -> -> 64 `i `ui ]
+"118
+[; ;main.c: 118:     charsRead = SendCMGF(responseArray);
+[e = _charsRead ( _SendCMGF (1 _responseArray ]
+"120
+[; ;main.c: 120:     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+[e $ ! == ( _strcmp (2 , -> _responseArray `*Cuc :s 2C -> 0 `i 974  ]
+{
+"121
+[; ;main.c: 121:         _delay((unsigned long)((200)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"93
-[; ;main.c: 93:         do { LATCbits.LATC2 = 0; } while(0);
-[e :U 980 ]
-{
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+"122
+[; ;main.c: 122:     } else {
 }
-[e :U 979 ]
-"94
-[; ;main.c: 94:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"95
-[; ;main.c: 95:     } else {
-}
-[e $U 981  ]
+[e $U 975  ]
 [e :U 974 ]
 {
-"96
-[; ;main.c: 96:         do { LATCbits.LATC0 = 1; } while(0);
-[e :U 984 ]
+"123
+[; ;main.c: 123:         WarningFlash();
+[e ( _WarningFlash ..  ]
+"124
+[; ;main.c: 124:     }
+}
+[e :U 975 ]
+"126
+[; ;main.c: 126:     memset(responseArray, 0, sizeof(char) * 64);
+[e ( _memset (3 , , -> _responseArray `*v -> 0 `i * -> # `uc `ui -> -> 64 `i `ui ]
+"128
+[; ;main.c: 128:     charsRead = SendCSCS(responseArray);
+[e = _charsRead ( _SendCSCS (1 _responseArray ]
+"130
+[; ;main.c: 130:     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
+[e $ ! == ( _strcmp (2 , -> _responseArray `*Cuc :s 3C -> 0 `i 976  ]
 {
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+"131
+[; ;main.c: 131:         _delay((unsigned long)((200)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"132
+[; ;main.c: 132:     } else {
+}
+[e $U 977  ]
+[e :U 976 ]
+{
+"133
+[; ;main.c: 133:         WarningFlash();
+[e ( _WarningFlash ..  ]
+"134
+[; ;main.c: 134:     }
+}
+[e :U 977 ]
+"136
+[; ;main.c: 136:     memset(responseArray, 0, sizeof(char) * 64);
+[e ( _memset (3 , , -> _responseArray `*v -> 0 `i * -> # `uc `ui -> -> 64 `i `ui ]
+"137
+[; ;main.c: 137: }
+[e :UE 971 ]
+}
+"139
+[; ;main.c: 139: void Button1Message(char *responseArray, int charsRead, char *line) {
+[v _Button1Message `(v ~T0 @X0 1 ef3`*uc`i`*uc ]
+{
+[e :U _Button1Message ]
+[v _responseArray `*uc ~T0 @X0 1 r1 ]
+[v _charsRead `i ~T0 @X0 1 r2 ]
+[v _line `*uc ~T0 @X0 1 r3 ]
+[f ]
+"140
+[; ;main.c: 140:     PreMessageSetup(responseArray, charsRead);
+[e ( _PreMessageSetup (2 , _responseArray _charsRead ]
+"142
+[; ;main.c: 142:     charsRead = SendBtn1Message(responseArray, line);
+[e = _charsRead ( _SendBtn1Message (2 , _responseArray _line ]
+"144
+[; ;main.c: 144:     if (strcmp(responseArray, "\r\n") == 0) {
+[e $ ! == ( _strcmp (2 , -> _responseArray `*Cuc :s 4C -> 0 `i 979  ]
+{
+"145
+[; ;main.c: 145:     } else {
+}
+[e $U 980  ]
+[e :U 979 ]
+{
+"146
+[; ;main.c: 146:         WarningFlash();
+[e ( _WarningFlash ..  ]
+"147
+[; ;main.c: 147:     }
+}
+[e :U 980 ]
+"149
+[; ;main.c: 149:     memset(responseArray, 0, sizeof(char) * 64);
+[e ( _memset (3 , , -> _responseArray `*v -> 0 `i * -> # `uc `ui -> -> 64 `i `ui ]
+"150
+[; ;main.c: 150: }
+[e :UE 978 ]
+}
+"152
+[; ;main.c: 152: void Button2Message(char *responseArray, int charsRead, char *line) {
+[v _Button2Message `(v ~T0 @X0 1 ef3`*uc`i`*uc ]
+{
+[e :U _Button2Message ]
+[v _responseArray `*uc ~T0 @X0 1 r1 ]
+[v _charsRead `i ~T0 @X0 1 r2 ]
+[v _line `*uc ~T0 @X0 1 r3 ]
+[f ]
+"153
+[; ;main.c: 153:     PreMessageSetup(responseArray, charsRead);
+[e ( _PreMessageSetup (2 , _responseArray _charsRead ]
+"155
+[; ;main.c: 155:     charsRead = SendBtn2Message(responseArray, line);
+[e = _charsRead ( _SendBtn2Message (2 , _responseArray _line ]
+"157
+[; ;main.c: 157:     if (strcmp(responseArray, "\r\n") == 0) {
+[e $ ! == ( _strcmp (2 , -> _responseArray `*Cuc :s 5C -> 0 `i 982  ]
+{
+"158
+[; ;main.c: 158:     } else {
+}
+[e $U 983  ]
+[e :U 982 ]
+{
+"159
+[; ;main.c: 159:         WarningFlash();
+[e ( _WarningFlash ..  ]
+"160
+[; ;main.c: 160:     }
 }
 [e :U 983 ]
-"97
-[; ;main.c: 97:     }
+"162
+[; ;main.c: 162:     memset(responseArray, 0, sizeof(char) * 64);
+[e ( _memset (3 , , -> _responseArray `*v -> 0 `i * -> # `uc `ui -> -> 64 `i `ui ]
+"163
+[; ;main.c: 163: }
+[e :UE 981 ]
 }
-[e :U 981 ]
-"99
-[; ;main.c: 99:     memset(responseArray, 0, sizeof responseArray);
-[e ( _memset (3 , , -> &U _responseArray `*v -> 0 `i -> # _responseArray `ui ]
-"101
-[; ;main.c: 101:     charsRead = SendCSCS(responseArray);
-[e = _charsRead ( _SendCSCS (1 &U _responseArray ]
-"103
-[; ;main.c: 103:     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-[e $ ! == ( _strcmp (2 , -> &U _responseArray `*Cuc :s 3C -> 0 `i 985  ]
+"165
+[; ;main.c: 165: void Button3Message(char *responseArray, int charsRead, char *line) {
+[v _Button3Message `(v ~T0 @X0 1 ef3`*uc`i`*uc ]
 {
-"104
-[; ;main.c: 104:         do { LATCbits.LATC2 = 1; } while(0);
-[e :U 988 ]
+[e :U _Button3Message ]
+[v _responseArray `*uc ~T0 @X0 1 r1 ]
+[v _charsRead `i ~T0 @X0 1 r2 ]
+[v _line `*uc ~T0 @X0 1 r3 ]
+[f ]
+"166
+[; ;main.c: 166:     PreMessageSetup(responseArray, charsRead);
+[e ( _PreMessageSetup (2 , _responseArray _charsRead ]
+"168
+[; ;main.c: 168:     charsRead = SendBtn3Message(responseArray, line);
+[e = _charsRead ( _SendBtn3Message (2 , _responseArray _line ]
+"170
+[; ;main.c: 170:     if (strcmp(responseArray, "\r\n") == 0) {
+[e $ ! == ( _strcmp (2 , -> _responseArray `*Cuc :s 6C -> 0 `i 985  ]
 {
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+"171
+[; ;main.c: 171:     } else {
 }
-[e :U 987 ]
-"105
-[; ;main.c: 105:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"106
-[; ;main.c: 106:         do { LATCbits.LATC2 = 0; } while(0);
-[e :U 991 ]
-{
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-}
-[e :U 990 ]
-"107
-[; ;main.c: 107:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"108
-[; ;main.c: 108:     } else {
-}
-[e $U 992  ]
+[e $U 986  ]
 [e :U 985 ]
 {
-"109
-[; ;main.c: 109:         do { LATCbits.LATC0 = 1; } while(0);
-[e :U 995 ]
+"172
+[; ;main.c: 172:         WarningFlash();
+[e ( _WarningFlash ..  ]
+"173
+[; ;main.c: 173:     }
+}
+[e :U 986 ]
+"175
+[; ;main.c: 175:     memset(responseArray, 0, sizeof(char) * 64);
+[e ( _memset (3 , , -> _responseArray `*v -> 0 `i * -> # `uc `ui -> -> 64 `i `ui ]
+"176
+[; ;main.c: 176: }
+[e :UE 984 ]
+}
+"178
+[; ;main.c: 178: void CookiesTest(char *responseArray, int charsRead) {
+[v _CookiesTest `(v ~T0 @X0 1 ef2`*uc`i ]
 {
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-}
-[e :U 994 ]
-"110
-[; ;main.c: 110:     }
-}
-[e :U 992 ]
-"112
-[; ;main.c: 112:     memset(responseArray, 0, sizeof responseArray);
-[e ( _memset (3 , , -> &U _responseArray `*v -> 0 `i -> # _responseArray `ui ]
-"114
-[; ;main.c: 114:     charsRead = SendTestMessage(responseArray, "TEST");
-[e = _charsRead ( _SendTestMessage (2 , &U _responseArray :s 4C ]
-"116
-[; ;main.c: 116:     if (strcmp(responseArray, "\r\nOK\r\n") == 0) {
-[e $ ! == ( _strcmp (2 , -> &U _responseArray `*Cuc :s 5C -> 0 `i 996  ]
+[e :U _CookiesTest ]
+[v _responseArray `*uc ~T0 @X0 1 r1 ]
+[v _charsRead `i ~T0 @X0 1 r2 ]
+[f ]
+"179
+[; ;main.c: 179:     PreMessageSetup(responseArray, charsRead);
+[e ( _PreMessageSetup (2 , _responseArray _charsRead ]
+"181
+[; ;main.c: 181:     charsRead = SendTestMessage(responseArray, "COOKIES\x1A");
+[e = _charsRead ( _SendTestMessage (2 , _responseArray :s 7C ]
+"183
+[; ;main.c: 183:     if (strcmp(responseArray, "\r\n") == 0) {
+[e $ ! == ( _strcmp (2 , -> _responseArray `*Cuc :s 8C -> 0 `i 988  ]
 {
-"117
-[; ;main.c: 117:         do { LATCbits.LATC2 = 1; } while(0);
-[e :U 999 ]
+"184
+[; ;main.c: 184:     } else {
+}
+[e $U 989  ]
+[e :U 988 ]
 {
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+"185
+[; ;main.c: 185:         WarningFlash();
+[e ( _WarningFlash ..  ]
+"186
+[; ;main.c: 186:     }
 }
-[e :U 998 ]
-"118
-[; ;main.c: 118:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"119
-[; ;main.c: 119:         do { LATCbits.LATC2 = 0; } while(0);
-[e :U 1002 ]
-{
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[e :U 989 ]
+"188
+[; ;main.c: 188:     memset(responseArray, 0, sizeof(char) * 64);
+[e ( _memset (3 , , -> _responseArray `*v -> 0 `i * -> # `uc `ui -> -> 64 `i `ui ]
+"189
+[; ;main.c: 189: }
+[e :UE 987 ]
 }
-[e :U 1001 ]
-"120
-[; ;main.c: 120:         _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"121
-[; ;main.c: 121:     } else {
-}
-[e $U 1003  ]
-[e :U 996 ]
-{
-"122
-[; ;main.c: 122:         do { LATCbits.LATC0 = 1; } while(0);
-[e :U 1006 ]
-{
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-}
-[e :U 1005 ]
-"123
-[; ;main.c: 123:     }
-}
-[e :U 1003 ]
-"125
-[; ;main.c: 125:     memset(responseArray, 0, sizeof responseArray);
-[e ( _memset (3 , , -> &U _responseArray `*v -> 0 `i -> # _responseArray `ui ]
-"126
-[; ;main.c: 126: }
-[e :UE 962 ]
-}
-[a 4C 84 69 83 84 0 ]
+[a 7C 67 79 79 75 73 69 83 26 0 ]
 [a 1C 13 10 79 75 13 10 0 ]
 [a 2C 13 10 79 75 13 10 0 ]
 [a 3C 13 10 79 75 13 10 0 ]
-[a 5C 13 10 79 75 13 10 0 ]
+[a 4C 13 10 0 ]
+[a 5C 13 10 0 ]
+[a 6C 13 10 0 ]
+[a 8C 13 10 0 ]

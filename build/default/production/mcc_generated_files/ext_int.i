@@ -10943,58 +10943,13 @@ extern __bank0 __bit __timeout;
 # 27 "mcc_generated_files/ext_int.c" 2
 
 # 1 "mcc_generated_files/ext_int.h" 1
-# 250 "mcc_generated_files/ext_int.h"
+# 94 "mcc_generated_files/ext_int.h"
 void EXT_INT_Initialize(void);
-# 272 "mcc_generated_files/ext_int.h"
-void INT_ISR(void);
-# 296 "mcc_generated_files/ext_int.h"
-void INT_CallBack(void);
-# 319 "mcc_generated_files/ext_int.h"
-void INT_SetInterruptHandler(void (* InterruptHandler)(void));
-# 343 "mcc_generated_files/ext_int.h"
-extern void (*INT_InterruptHandler)(void);
-# 367 "mcc_generated_files/ext_int.h"
-void INT_DefaultInterruptHandler(void);
 # 28 "mcc_generated_files/ext_int.c" 2
 
 
-void (*INT_InterruptHandler)(void);
 
-void INT_ISR(void)
-{
-    (INTCONbits.INTF = 0);
-
-
-    INT_CallBack();
-}
-
-
-void INT_CallBack(void)
-{
-
-    if(INT_InterruptHandler)
-    {
-        INT_InterruptHandler();
-    }
-}
-
-void INT_SetInterruptHandler(void (* InterruptHandler)(void)){
-    INT_InterruptHandler = InterruptHandler;
-}
-
-void INT_DefaultInterruptHandler(void){
-
-
-}
 
 void EXT_INT_Initialize(void)
 {
-
-
-
-    (INTCONbits.INTF = 0);
-    (OPTION_REGbits.INTEDG = 1);
-
-    INT_SetInterruptHandler(INT_DefaultInterruptHandler);
-
 }
